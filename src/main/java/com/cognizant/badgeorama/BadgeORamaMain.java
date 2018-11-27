@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class BadgeORamaUi
+public class BadgeORamaMain
 {
     public static void main( String[] args )
     {
-        SpringApplication.run(BadgeORamaUi.class, args);
+        SpringApplication.run(BadgeORamaMain.class, args);
     }
 }

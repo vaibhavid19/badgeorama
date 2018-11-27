@@ -1,24 +1,23 @@
 {
-  "name": "spring-data-rest-and-reactjs",
-  "version": "0.1.0",
-  "description": "Demo of ReactJS + Spring Data REST",
+  "name": "badge-o-rama-ui",
+  "version": "1.0.0",
+  "description": "Badge-O-Rama UI",
   "repository": {
     "type": "git",
-    "url": "git@github.com:spring-guides/tut-react-and-spring-data-rest.git"
+    "url": "git@github.com/Spyro1001/badgeorama.git"
   },
   "keywords": [
     "rest",
     "hateoas",
     "spring",
-    "data",
     "react"
   ],
   "author": "Ray Hedgecock",
   "license": "",
   "bugs": {
-    "url": "https://github.com/spring-guides/tut-react-and-spring-data-rest/issues"
+    "url": "https://github.com/Spyro1001/badgeorama.git/issues"
   },
-  "homepage": "https://github.com/spring-guides/tut-react-and-spring-data-rest",
+  "homepage": "https://github.com/Spyro1001/badgeorama.git",
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
