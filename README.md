@@ -30,6 +30,10 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 * Return --> **Boolean** - true if save is successful
 
+* HTTPStatus --> **200**, if return true
+
+* HTTPStatus --> **500**, if return false
+
 *Acceptance Criteria:*  Visitor data is stored in database.
 
 ###### User Check-Out Endpoints
