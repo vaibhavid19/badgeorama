@@ -8,25 +8,25 @@ import java.util.Date;
 // tag::code[]
 public class Visitor {
 
-    private String phoneNumber;
-    private String firstName;
-    private String lastName;
-    private String company;
-    private String hostName;
-    private String hostPhone;
-    private String purposeOfVisit;
-    private String checkedInBy;
-    private String checkedOutBy;
-    private String reasonForDeletion;
-    private String badgeNumber;
+    private String phoneNumber;        // populated by user
+    private String firstName;          // populated by user
+    private String lastName;           // populated by user
+    private String company;            // populated by user
+    private String hostName;           // populated by user
+    private String hostPhone;          // populated by user
+    private String purposeOfVisit;     // populated by user
+    private String checkedInBy;        // populated by system
+    private String checkedOutBy;       // populated by system
+    private String reasonForDeletion;  // populated by guard
+    private String badgeNumber;        // populated by guard
 
-    private Date registerDate;
-    private Date checkedInDate;
-    private Date checkedOutDate;
+    private Date registerDate;         // populated by system
+    private Date checkedInDate;        // populated by system
+    private Date checkedOutDate;       // populated by system
 
-    private Boolean active;
-    private VisitStatus status;
-    private VisitorType visitorType;
+    private Boolean active;            // populated by system/guard
+    private VisitStatus status;        // populated by system
+    private VisitorType visitorType;   // populated by user
 
 
     public Visitor() {
