@@ -32,10 +32,24 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 * HTTPStatus --> **200**, if return true
 
-* HTTPStatus --> **500**, if return false
+* HTTPStatus --> **412**, if return false
 
 *Acceptance Criteria:*  Visitor data is stored in database.
 
 ###### User Check-Out Endpoints
 
-More to come!!!
+*Scenario 1:*  Visitor needs to check out and has entered their phone number and has pressed Lookup.
+
+*Requirement 1:*  Visitor data needs to be retrieved from the database based on phone number and sent to UI.
+
+* **GET** /visitor/lookup/{phoneNumber}
+
+* @PathVariable --> **String** - Visitor phone number (ex. 4807601234)
+
+* Return --> **Visitor** - lookup based on phone number
+
+* HTTPStatus --> **200**, if successful
+
+* HTTPStatus --> **404**, if not successful
+
+*Acceptance Criteria:*  Visitor data is sent back to UI.
