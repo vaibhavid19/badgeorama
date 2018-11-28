@@ -18,9 +18,9 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 ### REST Endpoint Contracts
 
-	User Check-In Endpoints
+	Visitor Check-In Endpoints
 
-###### Scenario 1
+###### Scenario 1 - Visitor Registration
 
 *Scenario 1:*  Visitor has filled in registration and clicked on Submit button.
 
@@ -38,8 +38,9 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 *Acceptance Criteria:*  Visitor data is stored in database.
 
-	User Check-Out Endpoints
-######Scenario 1
+	Visitor Check-Out Endpoints
+
+###### Scenario 1 - Visitor Lookup
 
 *Scenario 1:*  Visitor needs to check out and has entered their phone number and has pressed Lookup.
 
@@ -57,7 +58,7 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 *Acceptance Criteria:*  Visitor data is sent back to UI.
 
-######Scenario 2
+###### Scenario 2 - Visitor Check-Out
 
 *Scenario 2:*  Visitor needs to check out and has entered their phone number and has pressed Lookup.  They now click on Check-Out to check-out.
 
@@ -76,31 +77,12 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 *Acceptance Criteria:*  Updated status is saved for Visitor.
 
 	Host Check-In Endpoints
-######Scenario 1 - Host Lookup
 
-*Scenario 1:*  Host has entered phone number and pressed Lookup.
+###### Scenario 1 - Visitor Check-In
 
-*Requirement 1:*  Host data needs to be retrieved, (if present), and returned to the UI.
+*Scenario 1:*  Host has entered name/phone and verified correct visitor is on screen.  They now press Check-In to check in the visitor.
 
-* **GET** /host/lookup/{phoneNumber}
-
-* @PathVariable --> **String** - Host phone number (ex. 4807601234)
-
-* Return --> **Host** - lookup based on phone number
-
-* HTTPStatus --> **200**, if successful
-
-* HTTPStatus --> **404**, if not successful
-
-*Acceptance Criteria:*  Host data is sent back to UI.
-
-######Scenario 2 - New Host
-
-*Scenario 2:*  Host has **entered** name (Host data was not present when looked up)and clicked on Confirm Check-In.
-
-*Requirement 2:*  Visitor data needs to be sent to the database with the updated status.  Host data needs to be added.
-
-######Scenario 2, Endpoint 1 - Visitor Check-In
+*Requirement 1:*  Updated Visitor data needs to be sent to the database with the updated status, host phone and host name.
 
 * **PUT** /visitor/checkin/
 
@@ -113,58 +95,10 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 * HTTPStatus --> **412**, if not successful
 
 *Acceptance Criteria:*  Updated status and host information is saved for Visitor.
-
-######Scenario 2, Endpoint 2 - Host Creation
-
-* **POST** /host/register
-
-* @RequestBody --> **Host** - New Host.
-
-* Return --> **Boolean** - if host successfully created.
-
-* HTTPStatus --> **200**, if successful
-
-* HTTPStatus --> **412**, if not successful
-
-*Acceptance Criteria:*  New Host saved to database.
-
-######Scenario 3 - Updated Host
-
-*Scenario 3:*  Host has **updated** name (Host data was present, but name was incorrect when looked up)and clicked on Confirm Check-In.
-
-*Requirement 3:*  Visitor data needs to be sent to the database with the updated status.  Host data needs to be updated.
-
-######Scenario 3, Endpoint 1 - Visitor Check-In
-
-* **PUT** /visitor/checkin/
-
-* @RequestBody --> **Visitor** - Visitor with updated VisitorStatus and Host information.
-
-* Return --> **Boolean** - if status and host information successfully updated.
-
-* HTTPStatus --> **200**, if successful
-
-* HTTPStatus --> **412**, if not successful
-
-*Acceptance Criteria:*  Updated status and host information is saved for Visitor.
-
-######Scenario 3, Endpoint 2 - Host Update
-
-* **POST** /host/update
-
-* @RequestBody --> **Host** - Host with updated name.
-
-* Return --> **Boolean** - if host successfully updated.
-
-* HTTPStatus --> **200**, if successful
-
-* HTTPStatus --> **412**, if not successful
-
-*Acceptance Criteria:*  Updated Host saved to database.
 
 	Guest Status Endpoints
 
-######Scenario 1 - System Update - Waiting
+###### Scenario 1 - System Update - Waiting
 
 *Scenario 1:*  System needs to update list of Visitors in *Waiting* status list.
 
@@ -182,7 +116,7 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 *Acceptance Criteria:*  Visitor data is sent back to UI.
 
-######Scenario 2 - System Update - Checked-In
+###### Scenario 2 - System Update - Checked-In
 
 *Scenario 2:*  System needs to update list of Visitors in *Checked-In* status list.
 
@@ -200,7 +134,7 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 *Acceptance Criteria:*  Visitor data is sent back to UI.
 
-######Scenario 3 - System Update - Checked-Out
+###### Scenario 3 - System Update - Checked-Out
 
 *Scenario 3:*  System needs to update list of Visitors in *Checked-Out* status list.
 
@@ -218,7 +152,7 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 *Acceptance Criteria:*  Visitor data is sent back to UI.
 
-######Scenario 4 - Guard Check-In
+###### Scenario 4 - Guard Check-In
 
 *Scenario 4:*  Guard clicks Guard Check-In to check in visitor.
 
@@ -228,7 +162,7 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
-* Return --> **Boolean** - if status and host information successfully updated.
+* Return --> **Boolean** - true, if status and host information successfully updated.
 
 * HTTPStatus --> **200**, if successful
 
@@ -236,7 +170,7 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 *Acceptance Criteria:*  Updated Visitor is saved in database.
 
-######Scenario 5 - Guard Check-Out
+###### Scenario 5 - Guard Check-Out
 
 *Scenario 5:*  Guard clicks Guard Check-Out to check out visitor.
 
@@ -252,11 +186,11 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 * HTTPStatus --> **412**, if not successful
 
-*Acceptance Criteria:*  Updated status is saved for Visitor.
+*Acceptance Criteria:*  Updated Visitor status is saved in database.
 
 	Visitor Verify Endpoints
 	
-######Scenario 1 - Finish
+###### Scenario 1 - Finish
  
 *Scenario 1:*  Guard clicks Finish to verify visitor.
  
@@ -264,7 +198,7 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 * **PUT** /visitor/verify/
 
-* @RequestBody --> **Visitor** - Visitor with updated VisitorStatus and Host information.
+* @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
 * Return --> **Boolean** - if visitor status successfully saved.
 
@@ -273,3 +207,63 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 * HTTPStatus --> **412**, if not successful
 
 *Acceptance Criteria:*  Updated visitor information is saved in database.
+
+    Visitor Information Endpoints
+
+###### Scenario 1 - Get Information
+
+*Scenario 1:*  Guard double-clicks on a record on the guest status screen.  All information about the visitor needs to be displayed.
+
+*Requirement 1:*  Visitor data needs to be retrieved from the database based on phone number and sent to UI.
+
+* **GET** /visitor/lookup/{phoneNumber}
+
+* @PathVariable --> **String** - Visitor phone number (ex. 4807601234)
+
+* Return --> **Visitor** - lookup based on phone number
+
+* HTTPStatus --> **200**, if successful
+
+* HTTPStatus --> **404**, if not successful
+
+*Acceptance Criteria:*  Visitor data is sent back to UI.
+
+    Guest Admin Endpoints
+
+###### Scenario 1 - Update Information
+
+*Scenario 1:*  Guard clicks on Update button after editing Visitor record.
+
+*Requirement 1:*  Updated Visitor data needs to be saved to the database.
+
+* **PUT** /visitor/update
+
+* @PathVariable --> **Visitor** - Updated visitor information.  Can be 1 or more fields updated.
+
+* Return --> **Boolean** - true, if updated successfully.
+
+* HTTPStatus --> **200**, if successful
+
+* HTTPStatus --> **404**, if not successful
+
+*Acceptance Criteria:*  Updated Visitor data is successfully saved to database.
+
+    Deletion Confirmation Endpoints
+
+###### Scenario 1 - Delete Visitor
+
+*Scenario 1:*  Guard has navigated to deletion confirmation page to delete a record.  The guard has filled in the reason for deletion and clicks on Yes, Delete!
+
+*Requirement 1:*  Updated Visitor data needs to be saved to the database.
+
+* **DELETE** /visitor/delete
+
+* @PathVariable --> **Visitor** - Visitor to be deleted.
+
+* Return --> **Boolean** - true, if deleted successfully.
+
+* HTTPStatus --> **200**, if successful
+
+* HTTPStatus --> **404**, if not successful
+
+*Acceptance Criteria:*  Deleted Visitor has been *soft* deleted from database.  (Mark **active** field false.)
