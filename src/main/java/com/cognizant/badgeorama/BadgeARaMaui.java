@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * https://spring.io/guides/tutorials/react-and-spring-data-rest/
  */
 @SpringBootApplication
-public class BadgeORamaMain
+public class BadgeARaMaui
 {
     public static void main( String[] args )
     {
-        SpringApplication.run(BadgeORamaMain.class, args);
+        SpringApplication.run(BadgeARaMaui.class, args);
     }
 }

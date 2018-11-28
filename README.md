@@ -100,7 +100,7 @@ public class JacksonParserPOC {
 
 * **GET** /visitor/lookup/{phoneNumber}
 
-* @PathVariable --> **String** - Visitor phone number (ex. 4807601234)
+* @PathVariable --> **String** - Visitor phone number (ex. 4807601234) Assume the phone number could contain dashes or parenthesis.  (You'll need to strip non-numeric.)
 
 * Return --> **Visitor** - lookup based on phone number
 
