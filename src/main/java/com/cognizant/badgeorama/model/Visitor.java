@@ -196,6 +196,10 @@ public class Visitor {
         this.visitorType = visitorType;
     }
 
+    public static VisitorBuilder builder() {
+        return new VisitorBuilder();
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Visitor{");
