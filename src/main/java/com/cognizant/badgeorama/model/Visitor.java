@@ -60,6 +60,165 @@ public class Visitor {
         GUEST, EMPLOYEE
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getHostName() {
+        return hostName;
+    }
+
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
+    }
+
+    public String getHostPhone() {
+        return hostPhone;
+    }
+
+    public void setHostPhone(String hostPhone) {
+        this.hostPhone = hostPhone;
+    }
+
+    public String getPurposeOfVisit() {
+        return purposeOfVisit;
+    }
+
+    public void setPurposeOfVisit(String purposeOfVisit) {
+        this.purposeOfVisit = purposeOfVisit;
+    }
+
+    public String getCheckedInBy() {
+        return checkedInBy;
+    }
+
+    public void setCheckedInBy(String checkedInBy) {
+        this.checkedInBy = checkedInBy;
+    }
+
+    public String getCheckedOutBy() {
+        return checkedOutBy;
+    }
+
+    public void setCheckedOutBy(String checkedOutBy) {
+        this.checkedOutBy = checkedOutBy;
+    }
+
+    public String getReasonForDeletion() {
+        return reasonForDeletion;
+    }
+
+    public void setReasonForDeletion(String reasonForDeletion) {
+        this.reasonForDeletion = reasonForDeletion;
+    }
+
+    public String getBadgeNumber() {
+        return badgeNumber;
+    }
+
+    public void setBadgeNumber(String badgeNumber) {
+        this.badgeNumber = badgeNumber;
+    }
+
+    public Date getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
+    }
+
+    public Date getCheckedInDate() {
+        return checkedInDate;
+    }
+
+    public void setCheckedInDate(Date checkedInDate) {
+        this.checkedInDate = checkedInDate;
+    }
+
+    public Date getCheckedOutDate() {
+        return checkedOutDate;
+    }
+
+    public void setCheckedOutDate(Date checkedOutDate) {
+        this.checkedOutDate = checkedOutDate;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public VisitStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(VisitStatus status) {
+        this.status = status;
+    }
+
+    public VisitorType getVisitorType() {
+        return visitorType;
+    }
+
+    public void setVisitorType(VisitorType visitorType) {
+        this.visitorType = visitorType;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Visitor{");
+        sb.append("phoneNumber='").append(phoneNumber).append('\'');
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", company='").append(company).append('\'');
+        sb.append(", hostName='").append(hostName).append('\'');
+        sb.append(", hostPhone='").append(hostPhone).append('\'');
+        sb.append(", purposeOfVisit='").append(purposeOfVisit).append('\'');
+        sb.append(", checkedInBy='").append(checkedInBy).append('\'');
+        sb.append(", checkedOutBy='").append(checkedOutBy).append('\'');
+        sb.append(", reasonForDeletion='").append(reasonForDeletion).append('\'');
+        sb.append(", badgeNumber='").append(badgeNumber).append('\'');
+        sb.append(", registerDate=").append(registerDate);
+        sb.append(", checkedInDate=").append(checkedInDate);
+        sb.append(", checkedOutDate=").append(checkedOutDate);
+        sb.append(", active=").append(active);
+        sb.append(", status=").append(status);
+        sb.append(", visitorType=").append(visitorType);
+        sb.append('}');
+        return sb.toString();
+    }
 
     /**
      * Builder
