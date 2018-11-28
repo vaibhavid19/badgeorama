@@ -53,7 +53,7 @@ public class Visitor {
     }
 
     public enum VisitStatus {
-        UNVERIFIED, WAITING, IN, OUT
+        UNVERIFIED, WAITING, WAITING_TIMEOUT, IN, OUT
     }
 
     public enum VisitorType {
