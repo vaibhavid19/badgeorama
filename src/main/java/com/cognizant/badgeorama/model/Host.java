@@ -1,5 +1,6 @@
 package com.cognizant.badgeorama.model;
 
+// tag::code[]
 public class Host {
 
     private String phoneNumber;
@@ -37,4 +38,5 @@ public class Host {
         sb.append('}');
         return sb.toString();
     }
+    // end::code[]
 }

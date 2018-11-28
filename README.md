@@ -18,7 +18,8 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 ### REST Endpoint Contracts
 
-###### User Check-In Endpoints
+#### User Check-In Endpoints
+###### Scenario 1
 
 *Scenario 1:*  Visitor has filled in registration and clicked on Submit button.
 
@@ -36,7 +37,8 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 
 *Acceptance Criteria:*  Visitor data is stored in database.
 
-###### User Check-Out Endpoints
+#### User Check-Out Endpoints
+######Scenario 1
 
 *Scenario 1:*  Visitor needs to check out and has entered their phone number and has pressed Lookup.
 
@@ -53,3 +55,39 @@ A PDF version of the wireframes is also included.  See ui-wireframes.pdf for det
 * HTTPStatus --> **404**, if not successful
 
 *Acceptance Criteria:*  Visitor data is sent back to UI.
+
+######Scenario 2
+
+*Scenario 2:*  Visitor needs to check out and has entered their phone number and has pressed Lookup.  They now click on Check-Out to check-out.
+
+*Requirement 2:*  Visitor data needs to be sent to the database with the updated status.
+
+* **PUT** /visitor/checkout/
+
+* @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
+
+* Return --> **Boolean** - if status successfully updated.
+
+* HTTPStatus --> **200**, if successful
+
+* HTTPStatus --> **412**, if not successful
+
+*Acceptance Criteria:*  Updated status is saved for Visitor.
+
+#### Host Check-In Endpoints
+
+*Scenario 1:*  Host has entered phone number and pressed Lookup.
+
+*Requirement 1:*  Host data needs to be retrieved, (if present), and returned to the UI.
+
+* **GET** /host/lookup/{phoneNumber}
+
+* @PathVariable --> **String** - Host phone number (ex. 4807601234)
+
+* Return --> **Host** - lookup based on phone number
+
+* HTTPStatus --> **200**, if successful
+
+* HTTPStatus --> **404**, if not successful
+
+*Acceptance Criteria:*  Host data is sent back to UI.
