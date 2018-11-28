@@ -319,3 +319,5 @@ public class JacksonParserPOC {
 * HTTPStatus --> **404**, if not successful
 
 *Acceptance Criteria:*  Deleted Visitor has been *soft* deleted from database.  (Mark **active** field false.)
+
+~ Ray Hedgecock
