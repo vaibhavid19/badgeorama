@@ -20,16 +20,18 @@ public class Visitor {
     private String reasonForDeletion;  // populated by guard
     private String badgeNumber;        // populated by guard
 
-    private Date registerDate;         // populated by system
-    private Date checkedInDate;        // populated by system
-    private Date checkedOutDate;       // populated by system
+    private Date registerDate;                   // populated by system (backend)
+    private Date checkedInDate;                  // populated by system (backend)
+    private Date checkedOutDate;                 // populated by system (backend)
+    private Long milliSecondsSinceRegistration;  // populated by system (backend) - difference between Instant.now() and registerDate.getTime()
+    // example:  Long milliSecondsSinceRegistration = Instant.now() - registerDate.getTime();
 
     private Boolean active;            // populated by system/guard
     private VisitStatus status;        // populated by system
     private VisitorType visitorType;   // populated by user
 
-
     public Visitor() {
+
     }
 
     public Visitor(String phoneNumber, String firstName, String lastName, String company, String hostName, String hostPhone, String purposeOfVisit, String checkedInBy, String checkedOutBy, String reasonForDeletion, String badgeNumber, Date registerDate, Date checkedInDate, Date checkedOutDate, Boolean active, VisitStatus status, VisitorType visitorType) {
@@ -194,6 +196,14 @@ public class Visitor {
 
     public void setVisitorType(VisitorType visitorType) {
         this.visitorType = visitorType;
+    }
+
+    public Long getMilliSecondsSinceRegistration() {
+        return milliSecondsSinceRegistration;
+    }
+
+    public void setMilliSecondsSinceRegistration(Long milliSecondsSinceRegistration) {
+        this.milliSecondsSinceRegistration = milliSecondsSinceRegistration;
     }
 
     public static VisitorBuilder builder() {
