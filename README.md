@@ -82,11 +82,11 @@ public class JacksonParserPOC {
 
 * @RequestBody --> **Visitor** - data from registration form
 
-* Return --> **Boolean** - true if save is successful
+* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
 
 * HTTPStatus --> **200**, if return true
 
-* HTTPStatus --> **412**, if return false
+* If error, return proper HTTPStatus for error.
 
 *Acceptance Criteria:*  Visitor data is stored in database.
 
@@ -102,11 +102,11 @@ public class JacksonParserPOC {
 
 * @PathVariable --> **String** - Visitor phone number (ex. 4807601234) Assume the phone number could contain dashes or parenthesis.  (You'll need to strip non-numeric.)
 
-* Return --> **Visitor** - lookup based on phone number
+* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
 
 * HTTPStatus --> **200**, if successful
 
-* HTTPStatus --> **404**, if not successful
+* If error, return proper HTTPStatus for error.
 
 *Acceptance Criteria:*  Visitor data is sent back to UI.
 
@@ -120,11 +120,11 @@ public class JacksonParserPOC {
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
-* Return --> **Boolean** - if status successfully updated.
+* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
 
 * HTTPStatus --> **200**, if successful
 
-* HTTPStatus --> **412**, if not successful
+* If error, return proper HTTPStatus for error.
 
 *Acceptance Criteria:*  Updated status is saved for Visitor.
 
@@ -140,11 +140,11 @@ public class JacksonParserPOC {
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus and Host information.
 
-* Return --> **Boolean** - if status and host information successfully updated.
+* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
 
 * HTTPStatus --> **200**, if successful
 
-* HTTPStatus --> **412**, if not successful
+* If error, return proper HTTPStatus for error.
 
 *Acceptance Criteria:*  Updated status and host information is saved for Visitor.
 
@@ -160,11 +160,11 @@ public class JacksonParserPOC {
 
 * Nothing sent
 
-* Return --> **List<Visitor>** - list of visitors who's status is WAITING or UNVERIFIED
+* Return --> **List<Visitor>** - list of visitors who's status is WAITING or UNVERIFIED.  If error, return null or empty List.
 
 * HTTPStatus --> **200**, if successful
 
-* HTTPStatus --> **404**, if not successful
+* If error, return proper HTTPStatus for error.
 
 *Acceptance Criteria:*  Visitor data is sent back to UI.
 
@@ -178,11 +178,11 @@ public class JacksonParserPOC {
 
 * Nothing sent
 
-* Return --> **List<Visitor>** - list of visitors who's status is IN
+* Return --> **List<Visitor>** - list of visitors who's status is IN.  If error, return null or empty List.
 
 * HTTPStatus --> **200**, if successful
 
-* HTTPStatus --> **404**, if not successful
+* If error, return proper HTTPStatus for error.
 
 *Acceptance Criteria:*  Visitor data is sent back to UI.
 
@@ -196,11 +196,11 @@ public class JacksonParserPOC {
 
 * Nothing sent
 
-* Return --> **List<Visitor>** - list of visitors who's status is OUT
+* Return --> **List<Visitor>** - list of visitors who's status is OUT.  If error, return null or empty List.
 
 * HTTPStatus --> **200**, if successful
 
-* HTTPStatus --> **404**, if not successful
+* If error, return proper HTTPStatus for error.
 
 *Acceptance Criteria:*  Visitor data is sent back to UI.
 
@@ -214,11 +214,11 @@ public class JacksonParserPOC {
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
-* Return --> **Boolean** - true, if status and host information successfully updated.
+* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
 
 * HTTPStatus --> **200**, if successful
 
-* HTTPStatus --> **412**, if not successful
+* If error, return proper HTTPStatus for error.
 
 *Acceptance Criteria:*  Updated Visitor is saved in database.
 
@@ -232,11 +232,11 @@ public class JacksonParserPOC {
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
-* Return --> **Boolean** - if status successfully updated.
+* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
 
 * HTTPStatus --> **200**, if successful
 
-* HTTPStatus --> **412**, if not successful
+* If error, return proper HTTPStatus for error.
 
 *Acceptance Criteria:*  Updated Visitor status is saved in database.
 
@@ -252,11 +252,11 @@ public class JacksonParserPOC {
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
-* Return --> **Boolean** - if visitor status successfully saved.
+* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
 
 * HTTPStatus --> **200**, if successful
 
-* HTTPStatus --> **412**, if not successful
+* If error, return proper HTTPStatus for error.
 
 *Acceptance Criteria:*  Updated visitor information is saved in database.
 
@@ -272,11 +272,11 @@ public class JacksonParserPOC {
 
 * @PathVariable --> **String** - Visitor phone number (ex. 4807601234)
 
-* Return --> **Visitor** - lookup based on phone number - densely populated Visitor object
+* Return --> **Visitor** - lookup based on phone number - densely populated Visitor object.  If there's an error, just return null or empty Visitor (no fields populated).
 
 * HTTPStatus --> **200**, if successful
 
-* HTTPStatus --> **404**, if not successful
+* If error, return proper HTTPStatus for error.
 
 *Acceptance Criteria:*  Visitor data is sent back to UI.
 
@@ -292,11 +292,11 @@ public class JacksonParserPOC {
 
 * @PathVariable --> **Visitor** - Updated visitor information.  Can be 1 or more fields updated.
 
-* Return --> **Boolean** - true, if updated successfully.
+* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
 
 * HTTPStatus --> **200**, if successful
 
-* HTTPStatus --> **404**, if not successful
+* If error, return proper HTTPStatus for error.
 
 *Acceptance Criteria:*  Updated Visitor data is successfully saved to database.
 
@@ -312,11 +312,11 @@ public class JacksonParserPOC {
 
 * @PathVariable --> **Visitor** - Visitor to be deleted.
 
-* Return --> **Boolean** - true, if deleted successfully.
+* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
 
 * HTTPStatus --> **200**, if successful
 
-* HTTPStatus --> **404**, if not successful
+* If error, return proper HTTPStatus for error.
 
 *Acceptance Criteria:*  Deleted Visitor has been *soft* deleted from database.  (Mark **active** field false.)
 
