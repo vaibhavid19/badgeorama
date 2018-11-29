@@ -12,12 +12,12 @@ public class MonitorController {
         return "monitor/monitor";
     }
 
-    @RequestMapping(value = "/visitor_status")
+    @RequestMapping(value = "/status")
     public String status() {
         return "monitor/visitor_status";
     }
 
-    @RequestMapping(value = "/visitor_admin")
+    @RequestMapping(value = "/admin")
     public String admin() {
         return "monitor/visitor_admin";
     }
