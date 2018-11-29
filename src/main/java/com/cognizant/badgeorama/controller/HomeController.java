@@ -10,4 +10,14 @@ public class HomeController {
     public String index() {
         return "index";
     }
+
+    @RequestMapping(value = "/visitor")
+    public String visitor() {
+        return "visitor";
+    }
+
+    @RequestMapping(value = "/monitor")
+    public String monitor() {
+        return "monitor";
+    }
 }
