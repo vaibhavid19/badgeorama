@@ -260,6 +260,22 @@ public class JacksonParserPOC {
 
 *Acceptance Criteria:*  Updated visitor information is saved in database.
 
+###### Scenario 2 - Notify Host
+
+*Secnario 2:*  Guard clicks on Notify to notify Host of visitor.
+
+*Requirement 2:*  Notify Host (using host phone number entered by guard or visitor).
+
+* @RequestBody --> **Visitor** - Visitor with updated/original host name/phone.
+
+* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated)
+
+* HTTPStatus --> **200**, if successful
+
+* If error, return proper HTTPStatus for error.
+
+*Acceptance Criteria:* Host is notified of presence of visitor in lobby.
+
     Visitor Information Endpoints
 
 ###### Scenario 1 - Get Information
