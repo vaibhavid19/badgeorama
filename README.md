@@ -116,7 +116,7 @@ public class JacksonParserPOC {
 
 *Requirement 2:*  Visitor data needs to be sent to the database with the updated status.
 
-* **PUT** /visitor/checkout/
+* **PUT** /visitor/checkout
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
@@ -136,7 +136,7 @@ public class JacksonParserPOC {
 
 *Requirement 1:*  Updated Visitor data needs to be sent to the database with the updated status, host phone and host name.
 
-* **PUT** /visitor/checkin/
+* **PUT** /visitor/checkin
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus and Host information.
 
@@ -210,7 +210,7 @@ public class JacksonParserPOC {
 
 *Requirement 4:*  Updated Visitor needs to be saved in database.
 
-* **PUT** /visitor/checkin/
+* **PUT** /visitor/checkin
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
@@ -228,7 +228,7 @@ public class JacksonParserPOC {
 
 *Requirement 5:*  Updated Visitor needs to be saved in database.
 
-* **PUT** /visitor/checkout/
+* **PUT** /visitor/checkout
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
@@ -248,7 +248,7 @@ public class JacksonParserPOC {
  
 *Requirement 1:*  Updated Visitor needs to be saved in database.
 
-* **PUT** /visitor/verify/
+* **PUT** /visitor/verify
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
@@ -268,11 +268,11 @@ public class JacksonParserPOC {
 
 *Requirement 1:*  Visitor data needs to be retrieved from the database based on phone number and sent to UI.
 
-* **GET** /visitor/lookup/{phoneNumber}
+* **GET** /visit/lookup/{phoneNumber}
 
 * @PathVariable --> **String** - Visitor phone number (ex. 4807601234)
 
-* Return --> **Visitor** - lookup based on phone number
+* Return --> **Visitor** - lookup based on phone number - densely populated Visitor object
 
 * HTTPStatus --> **200**, if successful
 
