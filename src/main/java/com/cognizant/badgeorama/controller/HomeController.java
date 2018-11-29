@@ -3,6 +3,7 @@ package com.cognizant.badgeorama.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+// tag::code[]
 @Controller
 public class HomeController {
 
@@ -11,13 +12,5 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping(value = "/visitor")
-    public String visitor() {
-        return "visitor";
-    }
-
-    @RequestMapping(value = "/monitor")
-    public String monitor() {
-        return "monitor";
-    }
 }
+// end::code[]

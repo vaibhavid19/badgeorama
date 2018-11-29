@@ -6,11 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * https://spring.io/guides/tutorials/react-and-spring-data-rest/
  */
+// tag::code[]
 @SpringBootApplication
-public class BadgeARaMaui
-{
-    public static void main( String[] args )
-    {
+public class BadgeARaMaui {
+    public static void main(String[] args) {
         SpringApplication.run(BadgeARaMaui.class, args);
     }
 }
+// end::code[]

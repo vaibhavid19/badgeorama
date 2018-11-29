@@ -3,16 +3,25 @@ package com.cognizant.badgeorama.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+// tag::code[]
 @Controller
-@RequestMapping(value = "/visitor")
 public class VisitorController {
 
-
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/visitor")
     public String visitor() {
-        return "visitor";
+        return "visitor/visitor";
+    }
+
+    @RequestMapping(value = "/checkin")
+    public String checkin() {
+        return "visitor/visitor_checkin";
+    }
+
+    @RequestMapping(value = "/checkout")
+    public String checkout() {
+        return "visitor/visitor_checkout";
     }
 
 
-
 }
+// end::code[]

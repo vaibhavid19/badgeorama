@@ -55,12 +55,8 @@ public class Visitor {
         this.visitorType = visitorType;
     }
 
-    public enum VisitStatus {
-        UNVERIFIED, WAITING, WAITING_TIMEOUT, IN, OUT
-    }
-
-    public enum VisitorType {
-        GUEST, EMPLOYEE
+    public static VisitorBuilder builder() {
+        return new VisitorBuilder();
     }
 
     public String getPhoneNumber() {
@@ -207,10 +203,6 @@ public class Visitor {
         this.milliSecondsSinceRegistration = milliSecondsSinceRegistration;
     }
 
-    public static VisitorBuilder builder() {
-        return new VisitorBuilder();
-    }
-
     @Override
     public String toString() {
         return "Visitor{" +
@@ -233,6 +225,14 @@ public class Visitor {
                 ", status=" + status +
                 ", visitorType=" + visitorType +
                 '}';
+    }
+
+    public enum VisitStatus {
+        UNVERIFIED, WAITING, WAITING_TIMEOUT, IN, OUT
+    }
+
+    public enum VisitorType {
+        GUEST, EMPLOYEE
     }
 
     /**
