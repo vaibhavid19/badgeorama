@@ -34,7 +34,7 @@ public class Visitor {
 
     }
 
-    public Visitor(String phoneNumber, String firstName, String lastName, String company, String hostName, String hostPhone, String purposeOfVisit, String checkedInBy, String checkedOutBy, String reasonForDeletion, String badgeNumber, Date registerDate, Date checkedInDate, Date checkedOutDate, Boolean active, VisitStatus status, VisitorType visitorType) {
+    public Visitor(String phoneNumber, String firstName, String lastName, String company, String hostName, String hostPhone, String purposeOfVisit, String checkedInBy, String checkedOutBy, String reasonForDeletion, String badgeNumber, Date registerDate, Date checkedInDate, Date checkedOutDate, Long milliSecondsSinceRegistration, Boolean active, VisitStatus status, VisitorType visitorType) {
         this.phoneNumber = phoneNumber;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -49,6 +49,7 @@ public class Visitor {
         this.registerDate = registerDate;
         this.checkedInDate = checkedInDate;
         this.checkedOutDate = checkedOutDate;
+        this.milliSecondsSinceRegistration = milliSecondsSinceRegistration;
         this.active = active;
         this.status = status;
         this.visitorType = visitorType;
@@ -212,26 +213,26 @@ public class Visitor {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Visitor{");
-        sb.append("phoneNumber='").append(phoneNumber).append('\'');
-        sb.append(", firstName='").append(firstName).append('\'');
-        sb.append(", lastName='").append(lastName).append('\'');
-        sb.append(", company='").append(company).append('\'');
-        sb.append(", hostName='").append(hostName).append('\'');
-        sb.append(", hostPhone='").append(hostPhone).append('\'');
-        sb.append(", purposeOfVisit='").append(purposeOfVisit).append('\'');
-        sb.append(", checkedInBy='").append(checkedInBy).append('\'');
-        sb.append(", checkedOutBy='").append(checkedOutBy).append('\'');
-        sb.append(", reasonForDeletion='").append(reasonForDeletion).append('\'');
-        sb.append(", badgeNumber='").append(badgeNumber).append('\'');
-        sb.append(", registerDate=").append(registerDate);
-        sb.append(", checkedInDate=").append(checkedInDate);
-        sb.append(", checkedOutDate=").append(checkedOutDate);
-        sb.append(", active=").append(active);
-        sb.append(", status=").append(status);
-        sb.append(", visitorType=").append(visitorType);
-        sb.append('}');
-        return sb.toString();
+        return "Visitor{" +
+                "phoneNumber='" + phoneNumber + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", company='" + company + '\'' +
+                ", hostName='" + hostName + '\'' +
+                ", hostPhone='" + hostPhone + '\'' +
+                ", purposeOfVisit='" + purposeOfVisit + '\'' +
+                ", checkedInBy='" + checkedInBy + '\'' +
+                ", checkedOutBy='" + checkedOutBy + '\'' +
+                ", reasonForDeletion='" + reasonForDeletion + '\'' +
+                ", badgeNumber='" + badgeNumber + '\'' +
+                ", registerDate=" + registerDate +
+                ", checkedInDate=" + checkedInDate +
+                ", checkedOutDate=" + checkedOutDate +
+                ", milliSecondsSinceRegistration=" + milliSecondsSinceRegistration +
+                ", active=" + active +
+                ", status=" + status +
+                ", visitorType=" + visitorType +
+                '}';
     }
 
     /**
@@ -253,6 +254,7 @@ public class Visitor {
         private Date registerDate;
         private Date checkedInDate;
         private Date checkedOutDate;
+        private Long milliSecondsSinceRegistration;
         private Boolean active;
         private Visitor.VisitStatus status;
         private Visitor.VisitorType visitorType;
@@ -327,6 +329,11 @@ public class Visitor {
             return this;
         }
 
+        public VisitorBuilder milliSecondsSinceRegistration(Long milliSecondsSinceRegistration) {
+            this.milliSecondsSinceRegistration = milliSecondsSinceRegistration;
+            return this;
+        }
+
         public VisitorBuilder active(Boolean active) {
             this.active = active;
             return this;
@@ -343,7 +350,7 @@ public class Visitor {
         }
 
         public Visitor build() {
-            return new Visitor(phoneNumber, firstName, lastName, company, hostName, hostPhone, purposeOfVisit, checkedInBy, checkedOutBy, reasonForDeletion, badgeNumber, registerDate, checkedInDate, checkedOutDate, active, status, visitorType);
+            return new Visitor(phoneNumber, firstName, lastName, company, hostName, hostPhone, purposeOfVisit, checkedInBy, checkedOutBy, reasonForDeletion, badgeNumber, registerDate, checkedInDate, checkedOutDate, milliSecondsSinceRegistration, active, status, visitorType);
         }
     }
 }
