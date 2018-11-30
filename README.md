@@ -306,7 +306,7 @@ public class JacksonParserPOC {
 
 * **PUT** /visitor/update
 
-* @PathVariable --> **Visitor** - Updated visitor information.  Can be 1 or more fields updated.
+* @RequestBody --> **Visitor** - Updated visitor information.  Can be 1 or more fields updated.
 
 * Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
 
@@ -326,7 +326,7 @@ public class JacksonParserPOC {
 
 * **DELETE** /visitor/delete
 
-* @PathVariable --> **Visitor** - Visitor to be deleted.
+* @RequestBody --> **Visitor** - Visitor to be deleted.
 
 * Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
 
