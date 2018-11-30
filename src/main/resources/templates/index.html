@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <title>BadgeARaMaui</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,7 @@
 <!-- Header -->
 <header class="w3-container w3-theme w3-padding" id="myHeader">
     <div class="w3-center">
-        <h4 class="w3-animate-right">Welcome to Cognizant, Mesa Arizona</h4>
+        <h4 class="w3-animate-right"><p th:text="'Welcome to Cognizant, ' + ${location} + '!'" /></h4>
         <h1 class="w3-xxxlarge w3-animate-left">BadgeARaMaui</h1>
 
     </div>
@@ -28,7 +28,7 @@
 <footer class="w3-container w3-theme-dark w3-padding-16">
     <p class="w3-center">Powered by <a href="https://spring.io" target="_blank">Spring</a> and Minions.</p>
     <div class="w3-center">
-       <!-- <img src="../images/minion.jpg" alt="Minion"> -->
+       <p th:text="'Time is ' + ${time}" />
     </div>
 
 </footer>
