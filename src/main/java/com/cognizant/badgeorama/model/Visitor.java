@@ -17,8 +17,8 @@ public class Visitor {
     private String purposeOfVisit;     // populated by user
     private String checkedInBy;        // populated by system
     private String checkedOutBy;       // populated by system
-    private String reasonForDeletion;  // populated by guard
-    private String badgeNumber;        // populated by guard
+    private String reasonForDeletion;  // populated by guard/admin
+    private String badgeNumber;        // populated by guard/admin
 
     private Date registerDate;                   // populated by system (backend)
     private Date checkedInDate;                  // populated by system (backend)
@@ -26,7 +26,7 @@ public class Visitor {
     private Long milliSecondsSinceRegistration;  // populated by system (backend) - difference between Instant.now() and registerDate.getTime()
     // example:  Long milliSecondsSinceRegistration = Instant.now() - registerDate.getTime();
 
-    private Boolean active;            // populated by system/guard
+    private Boolean active;            // populated by system/guard/admin
     private VisitStatus status;        // populated by system
     private VisitorType visitorType;   // populated by user
 
@@ -205,26 +205,27 @@ public class Visitor {
 
     @Override
     public String toString() {
-        return "Visitor{" +
-                "phoneNumber='" + phoneNumber + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", company='" + company + '\'' +
-                ", hostName='" + hostName + '\'' +
-                ", hostPhone='" + hostPhone + '\'' +
-                ", purposeOfVisit='" + purposeOfVisit + '\'' +
-                ", checkedInBy='" + checkedInBy + '\'' +
-                ", checkedOutBy='" + checkedOutBy + '\'' +
-                ", reasonForDeletion='" + reasonForDeletion + '\'' +
-                ", badgeNumber='" + badgeNumber + '\'' +
-                ", registerDate=" + registerDate +
-                ", checkedInDate=" + checkedInDate +
-                ", checkedOutDate=" + checkedOutDate +
-                ", milliSecondsSinceRegistration=" + milliSecondsSinceRegistration +
-                ", active=" + active +
-                ", status=" + status +
-                ", visitorType=" + visitorType +
-                '}';
+        final StringBuilder sb = new StringBuilder("Visitor{");
+        sb.append("phoneNumber='").append(phoneNumber).append('\'');
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", company='").append(company).append('\'');
+        sb.append(", hostName='").append(hostName).append('\'');
+        sb.append(", hostPhone='").append(hostPhone).append('\'');
+        sb.append(", purposeOfVisit='").append(purposeOfVisit).append('\'');
+        sb.append(", checkedInBy='").append(checkedInBy).append('\'');
+        sb.append(", checkedOutBy='").append(checkedOutBy).append('\'');
+        sb.append(", reasonForDeletion='").append(reasonForDeletion).append('\'');
+        sb.append(", badgeNumber='").append(badgeNumber).append('\'');
+        sb.append(", registerDate=").append(registerDate);
+        sb.append(", checkedInDate=").append(checkedInDate);
+        sb.append(", checkedOutDate=").append(checkedOutDate);
+        sb.append(", milliSecondsSinceRegistration=").append(milliSecondsSinceRegistration);
+        sb.append(", active=").append(active);
+        sb.append(", status=").append(status);
+        sb.append(", visitorType=").append(visitorType);
+        sb.append('}');
+        return sb.toString();
     }
 
     public enum VisitStatus {
