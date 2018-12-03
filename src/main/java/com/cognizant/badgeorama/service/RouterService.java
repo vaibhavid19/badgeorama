@@ -32,7 +32,7 @@ public class RouterService {
         if (VisitorDto.class.isAssignableFrom(modelDto.getClass())) {
 
             Method method = null;
-            String methodName = modelDto.getDtoRoute().getRestEndpoint();
+            String methodName = modelDto.getDtoRoute().getRestEndpointMethodName();
 
             try {
                 method = this.visitorRestClients.getClass().getMethod(methodName, ModelDto.class);
@@ -53,7 +53,7 @@ public class RouterService {
         } else if (MonitorDto.class.isAssignableFrom(modelDto.getClass())) {
 
             Method method = null;
-            String methodName = modelDto.getDtoRoute().getRestEndpoint();
+            String methodName = modelDto.getDtoRoute().getRestEndpointMethodName();
 
             try {
                 method = this.monitorRestClients.getClass().getMethod(methodName, ModelDto.class);

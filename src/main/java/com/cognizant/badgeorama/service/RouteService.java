@@ -35,7 +35,7 @@ public class RouteService {
 
         routeTable = new HashMap<>();
         for (DtoRoute route : this.routeProperties.getDtoRoutes()) {
-            routeTable.put(route.getUiEndpoint(), route);
+            routeTable.put(route.getUiEndpointMethodName(), route);
         }
 
     }

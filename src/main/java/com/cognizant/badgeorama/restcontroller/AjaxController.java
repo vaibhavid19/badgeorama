@@ -8,10 +8,7 @@ import com.cognizant.badgeorama.service.RouterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -44,8 +41,30 @@ public class AjaxController {
         ModelDto modelDto = routerService.route(dto);
 
         // get response from service and return it
-        Visitor visitor = modelDto.getResponse().getBody();
-        return visitor;
+        Visitor response = modelDto.getResponse().getBody();
+        return response;
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value="/visitor/register")
+    public Visitor registerVisitor(@RequestBody Visitor visitor, Model model) {
+
+        // Get the dto
+        ModelDto dto = null;
+        try {
+            dto = ModelDtoFactory.getInstance();
+        } catch (DtoException e) {
+            logger.error("Problem getting ModelDto.", e);
+        }
+        // create/populate visitor and set in dto
+        dto.setVisitor(visitor);
+
+        // make call to router service
+        ModelDto modelDto = routerService.route(dto);
+
+        // get response from service and return it
+        Visitor response = modelDto.getResponse().getBody();
+        return response;
+
     }
 
 

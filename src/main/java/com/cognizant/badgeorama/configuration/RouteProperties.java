@@ -16,6 +16,10 @@ public class RouteProperties {
 
     private Map<String, Route> routes;
 
+    private static DtoRoute convertRouteToDtoRoute(Route route) {
+        return new DtoRoute(route.uiEndpointMethodName, route.dtoClass, route.restEndpointMethodName, route.restEndpoint);
+    }
+
     public Map<String, Route> getRoutes() {
         return routes;
     }
@@ -35,22 +39,19 @@ public class RouteProperties {
         return dtoRoutes;
     }
 
-    private static DtoRoute convertRouteToDtoRoute(Route route) {
-        return new DtoRoute(route.uiEndpoint, route.dtoClass, route.restEndpoint);
-    }
-
     public static class Route {
 
-        private String uiEndpoint;
+        private String uiEndpointMethodName;
         private String dtoClass;
+        private String restEndpointMethodName;
         private String restEndpoint;
 
-        public String getUiEndpoint() {
-            return uiEndpoint;
+        public String getUiEndpointMethodName() {
+            return uiEndpointMethodName;
         }
 
-        public void setUiEndpoint(String uiEndpoint) {
-            this.uiEndpoint = uiEndpoint;
+        public void setUiEndpointMethodName(String uiEndpointMethodName) {
+            this.uiEndpointMethodName = uiEndpointMethodName;
         }
 
         public String getDtoClass() {
@@ -59,6 +60,14 @@ public class RouteProperties {
 
         public void setDtoClass(String dtoClass) {
             this.dtoClass = dtoClass;
+        }
+
+        public String getRestEndpointMethodName() {
+            return restEndpointMethodName;
+        }
+
+        public void setRestEndpointMethodName(String restEndpointMethodName) {
+            this.restEndpointMethodName = restEndpointMethodName;
         }
 
         public String getRestEndpoint() {

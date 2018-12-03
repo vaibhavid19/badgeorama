@@ -1,5 +1,6 @@
 package com.cognizant.badgeorama.restclient;
 
+import com.cognizant.badgeorama.configuration.GeneralProperties;
 import com.cognizant.badgeorama.model.Visitor;
 import com.cognizant.badgeorama.model.dto.ModelDto;
 import org.slf4j.Logger;
@@ -18,34 +19,65 @@ public class VisitorRestClients {
     private static final Logger logger = LoggerFactory.getLogger(VisitorRestClients.class);
 
     private final RestTemplate restTemplate;
+    private final GeneralProperties properties;
 
-    public VisitorRestClients(RestTemplate restTemplate) {
+    public VisitorRestClients(RestTemplate restTemplate, GeneralProperties generalProperties) {
         this.restTemplate = restTemplate;
+        this.properties = generalProperties;
     }
 
     public ModelDto visitorLookup(ModelDto modelDto) {
 
         String phoneNumber = modelDto.getVisitor().getPhoneNumber();
-
-        URI uri = getURI(phoneNumber);
+        URI uri = getURIWithPathVariable(modelDto, phoneNumber);
 
         ResponseEntity<Visitor> response = restTemplate.getForEntity(uri, Visitor.class);
-
         modelDto.setResponse(response);
 
         return modelDto;
     }
 
-    private URI getURI() {
-        return getURI("");
+    public ModelDto registerVisitor(ModelDto modelDto) {
+
+        URI uri = getURI(modelDto);
+
+        ResponseEntity<Visitor> response = restTemplate.postForEntity(uri, modelDto.getVisitor(), Visitor.class);
+        modelDto.setResponse(response);
+
+        return modelDto;
     }
 
-    private URI getURI(String phoneNumber) {
+    private URI getURI(ModelDto modelDto) {
 
-        String protocol = "http";
-        String host = "localhost";
-        int port = 15002;
-        String path = "/visitor/lookup/" + phoneNumber;
+        String protocol = properties.getProtocol();
+        String host = properties.getHost();
+        int port = Integer.parseInt(properties.getPort());
+
+        String path = modelDto.getDtoRoute().getRestEndpoint();
+        String auth = null;
+        String fragment = null;
+        String query = null;
+        URI uri = null;
+        try {
+            uri = new URI(protocol, auth, host, port, path, query, fragment);
+        } catch (URISyntaxException e) {
+            logger.error("URI Error", e);
+        }
+
+        return uri;
+    }
+
+    private URI getURIWithPathVariable(ModelDto modelDto, String variable) {
+
+        String protocol = properties.getProtocol();
+        String host = properties.getHost();
+        int port = Integer.parseInt(properties.getPort());
+
+        String endpoint = modelDto.getDtoRoute().getRestEndpoint();
+        String path = new StringBuilder()
+                .append(endpoint)
+                .append(endpoint.endsWith("/") ? "" : "/")
+                .append(variable).toString();
         String auth = null;
         String fragment = null;
         String query = null;

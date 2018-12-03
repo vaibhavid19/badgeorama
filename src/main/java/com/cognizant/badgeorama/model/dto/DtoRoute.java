@@ -2,25 +2,27 @@ package com.cognizant.badgeorama.model.dto;
 
 public class DtoRoute {
 
-    private String uiEndpoint;
+    private String uiEndpointMethodName;
     private String dtoClass;
+    private String restEndpointMethodName;
     private String restEndpoint;
 
     private DtoRoute() {
     }
 
-    public DtoRoute(String uiEndpoint, String dtoClass, String restEndpoint) {
-        this.uiEndpoint = uiEndpoint;
+    public DtoRoute(String uiEndpointMethodName, String dtoClass, String restEndpointMethodName, String restEndpoint) {
+        this.uiEndpointMethodName = uiEndpointMethodName;
         this.dtoClass = dtoClass;
+        this.restEndpointMethodName = restEndpointMethodName;
         this.restEndpoint = restEndpoint;
     }
 
-    public String getUiEndpoint() {
-        return uiEndpoint;
+    public String getUiEndpointMethodName() {
+        return uiEndpointMethodName;
     }
 
-    public void setUiEndpoint(String uiEndpoint) {
-        this.uiEndpoint = uiEndpoint;
+    public void setUiEndpointMethodName(String uiEndpointMethodName) {
+        this.uiEndpointMethodName = uiEndpointMethodName;
     }
 
     public String getDtoClass() {
@@ -29,6 +31,14 @@ public class DtoRoute {
 
     public void setDtoClass(String dtoClass) {
         this.dtoClass = dtoClass;
+    }
+
+    public String getRestEndpointMethodName() {
+        return restEndpointMethodName;
+    }
+
+    public void setRestEndpointMethodName(String restEndpointMethodName) {
+        this.restEndpointMethodName = restEndpointMethodName;
     }
 
     public String getRestEndpoint() {
@@ -42,8 +52,9 @@ public class DtoRoute {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("DtoRoute{");
-        sb.append("uiEndpoint='").append(uiEndpoint).append('\'');
+        sb.append("uiEndpointMethodName='").append(uiEndpointMethodName).append('\'');
         sb.append(", dtoClass='").append(dtoClass).append('\'');
+        sb.append(", restEndpointMethodName='").append(restEndpointMethodName).append('\'');
         sb.append(", restEndpoint='").append(restEndpoint).append('\'');
         sb.append('}');
         return sb.toString();
