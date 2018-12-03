@@ -1,5 +1,6 @@
 package com.cognizant.badgeorama.restcontroller;
 
+import com.cognizant.badgeorama.annotation.VisitorRestClient;
 import com.cognizant.badgeorama.exception.DtoException;
 import com.cognizant.badgeorama.model.Visitor;
 import com.cognizant.badgeorama.model.dto.ModelDto;
@@ -22,8 +23,9 @@ public class AjaxController {
         this.routerService = routerService;
     }
 
+    @VisitorRestClient
     @RequestMapping(method = RequestMethod.GET, value = "/visitor/lookup/{phoneNumber}")
-    public Visitor getVisitorLookup(@PathVariable("phoneNumber") String phoneNumber, Model model) {
+    public Visitor visitorLookup(@PathVariable("phoneNumber") String phoneNumber, Model model) {
 
         // Get the dto
         ModelDto dto = null;
@@ -45,7 +47,8 @@ public class AjaxController {
         return response;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value="/visitor/register")
+    @VisitorRestClient
+    @RequestMapping(method = RequestMethod.POST, value = "/visitor/register")
     public Visitor registerVisitor(@RequestBody Visitor visitor, Model model) {
 
         // Get the dto

@@ -3,9 +3,7 @@ package com.cognizant.badgeorama.model.dto;
 import com.cognizant.badgeorama.model.Visitor;
 import org.springframework.http.ResponseEntity;
 
-import java.io.Serializable;
-
-public abstract class GenericDto implements ModelDto, Serializable {
+public class GenericDto implements ModelDto {
 
     protected ResponseEntity<Visitor> response;
     protected Visitor visitor;

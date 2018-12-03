@@ -1,8 +1,7 @@
 package com.cognizant.badgeorama.service;
 
 import com.cognizant.badgeorama.model.dto.ModelDto;
-import com.cognizant.badgeorama.model.dto.MonitorDto;
-import com.cognizant.badgeorama.model.dto.VisitorDto;
+import com.cognizant.badgeorama.model.dto.RouteType;
 import com.cognizant.badgeorama.restclient.MonitorRestClients;
 import com.cognizant.badgeorama.restclient.VisitorRestClients;
 import org.slf4j.Logger;
@@ -29,7 +28,7 @@ public class RouterService {
 
         ModelDto response = null;
 
-        if (VisitorDto.class.isAssignableFrom(modelDto.getClass())) {
+        if (modelDto.getDtoRoute().getRouteType() == RouteType.VISITOR) {
 
             Method method = null;
             String methodName = modelDto.getDtoRoute().getRestEndpointMethodName();
@@ -50,7 +49,7 @@ public class RouterService {
                 }
             }
 
-        } else if (MonitorDto.class.isAssignableFrom(modelDto.getClass())) {
+        } else if (modelDto.getDtoRoute().getRouteType() == RouteType.MONITOR) {
 
             Method method = null;
             String methodName = modelDto.getDtoRoute().getRestEndpointMethodName();

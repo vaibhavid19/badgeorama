@@ -3,18 +3,18 @@ package com.cognizant.badgeorama.model.dto;
 public class DtoRoute {
 
     private String uiEndpointMethodName;
-    private String dtoClass;
     private String restEndpointMethodName;
     private String restEndpoint;
+    private RouteType routeType;
 
-    private DtoRoute() {
+    public DtoRoute() {
     }
 
-    public DtoRoute(String uiEndpointMethodName, String dtoClass, String restEndpointMethodName, String restEndpoint) {
+    public DtoRoute(String uiEndpointMethodName, String restEndpointMethodName, String restEndpoint, RouteType routeType) {
         this.uiEndpointMethodName = uiEndpointMethodName;
-        this.dtoClass = dtoClass;
         this.restEndpointMethodName = restEndpointMethodName;
         this.restEndpoint = restEndpoint;
+        this.routeType = routeType;
     }
 
     public String getUiEndpointMethodName() {
@@ -23,14 +23,6 @@ public class DtoRoute {
 
     public void setUiEndpointMethodName(String uiEndpointMethodName) {
         this.uiEndpointMethodName = uiEndpointMethodName;
-    }
-
-    public String getDtoClass() {
-        return dtoClass;
-    }
-
-    public void setDtoClass(String dtoClass) {
-        this.dtoClass = dtoClass;
     }
 
     public String getRestEndpointMethodName() {
@@ -49,13 +41,21 @@ public class DtoRoute {
         this.restEndpoint = restEndpoint;
     }
 
+    public RouteType getRouteType() {
+        return routeType;
+    }
+
+    public void setRouteType(RouteType routeType) {
+        this.routeType = routeType;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("DtoRoute{");
         sb.append("uiEndpointMethodName='").append(uiEndpointMethodName).append('\'');
-        sb.append(", dtoClass='").append(dtoClass).append('\'');
         sb.append(", restEndpointMethodName='").append(restEndpointMethodName).append('\'');
         sb.append(", restEndpoint='").append(restEndpoint).append('\'');
+        sb.append(", routeType=").append(routeType);
         sb.append('}');
         return sb.toString();
     }
