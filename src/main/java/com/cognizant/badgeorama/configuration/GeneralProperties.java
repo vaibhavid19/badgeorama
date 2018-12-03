@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Properties {
+public class GeneralProperties {
 
     @Value("${app.location}")
     private String location;
@@ -16,4 +16,5 @@ public class Properties {
     public void setLocation(String location) {
         this.location = location;
     }
+
 }

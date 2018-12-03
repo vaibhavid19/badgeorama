@@ -1,4 +1,4 @@
-package com.cognizant.badgeorama.controller;
+package com.cognizant.badgeorama.webcontroller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

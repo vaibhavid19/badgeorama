@@ -8,25 +8,10 @@ import java.io.Serializable;
 public abstract class GenericDto implements ModelDto, Serializable {
 
     protected ResponseEntity<Visitor> response;
-
     protected Visitor visitor;
+    protected DtoRoute dtoRoute;
 
     public GenericDto() {
-        this(null, new Visitor());
-    }
-
-    public GenericDto(ResponseEntity<Visitor> response, Visitor visitor) {
-        this.response = response;
-        this.visitor = visitor;
-    }
-
-    public GenericDto(String phoneNumber) {
-
-        if (visitor == null) {
-            this.visitor = new Visitor();
-        }
-
-        this.visitor.setPhoneNumber(phoneNumber);
     }
 
     @Override
@@ -47,5 +32,25 @@ public abstract class GenericDto implements ModelDto, Serializable {
     @Override
     public void setVisitor(Visitor visitor) {
         this.visitor = visitor;
+    }
+
+    @Override
+    public DtoRoute getDtoRoute() {
+        return dtoRoute;
+    }
+
+    @Override
+    public void setDtoRoute(DtoRoute dtoRoute) {
+        this.dtoRoute = dtoRoute;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("GenericDto{");
+        sb.append("response=").append(response);
+        sb.append(", visitor=").append(visitor);
+        sb.append(", dtoRoute=").append(dtoRoute);
+        sb.append('}');
+        return sb.toString();
     }
 }

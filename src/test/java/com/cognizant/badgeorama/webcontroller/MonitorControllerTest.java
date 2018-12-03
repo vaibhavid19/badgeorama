@@ -1,9 +1,7 @@
-package com.cognizant.badgeorama.controller;
+package com.cognizant.badgeorama.webcontroller;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class MonitorControllerTest {
 

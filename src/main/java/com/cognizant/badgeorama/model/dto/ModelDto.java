@@ -13,4 +13,8 @@ public interface ModelDto {
 
     public void setVisitor(Visitor visitor);
 
+    public DtoRoute getDtoRoute();
+
+    public void setDtoRoute(DtoRoute dtoRoute);
+
 }

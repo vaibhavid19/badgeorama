@@ -1,8 +1,7 @@
-package com.cognizant.badgeorama.controller.client;
+package com.cognizant.badgeorama.restclient;
 
 import com.cognizant.badgeorama.model.Visitor;
 import com.cognizant.badgeorama.model.dto.ModelDto;
-import com.cognizant.badgeorama.model.dto.VisitorLookupSparseDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

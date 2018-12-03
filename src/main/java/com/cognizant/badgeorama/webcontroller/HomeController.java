@@ -1,6 +1,6 @@
-package com.cognizant.badgeorama.controller;
+package com.cognizant.badgeorama.webcontroller;
 
-import com.cognizant.badgeorama.configuration.Properties;
+import com.cognizant.badgeorama.configuration.GeneralProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +12,9 @@ import java.util.Date;
 @Controller
 public class HomeController {
 
-    private final Properties properties;
+    private final GeneralProperties properties;
 
-    public HomeController(Properties properties) {
+    public HomeController(GeneralProperties properties) {
         this.properties = properties;
     }
 

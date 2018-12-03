@@ -18,7 +18,6 @@ public class BeanConfiguration {
     public RestTemplate getRestTemplate(RestTemplateBuilder builder) {
 
         builder.setConnectTimeout(10000);
-
         RestTemplate template = builder.build();
         return template;
     }

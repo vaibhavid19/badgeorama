@@ -1,4 +1,4 @@
-package com.cognizant.badgeorama.controller.client;
+package com.cognizant.badgeorama.restclient;
 
 import org.springframework.stereotype.Component;
 
