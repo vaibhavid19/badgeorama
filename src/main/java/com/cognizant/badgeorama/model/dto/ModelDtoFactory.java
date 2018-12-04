@@ -3,14 +3,12 @@ package com.cognizant.badgeorama.model.dto;
 import com.cognizant.badgeorama.annotation.MonitorRestClient;
 import com.cognizant.badgeorama.annotation.VisitorRestClient;
 import com.cognizant.badgeorama.exception.DtoException;
-import com.cognizant.badgeorama.restcontroller.AjaxController;
 import com.cognizant.badgeorama.service.RouteService;
 import com.cognizant.badgeorama.util.SpringApplicationContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
@@ -52,7 +50,7 @@ public class ModelDtoFactory {
             // get method - brute force, but gets job done
             Object bean = SpringApplicationContext.getBean(callingClass);
             Method[] methods = bean.getClass().getDeclaredMethods();
-            for(Method m : methods) {
+            for (Method m : methods) {
                 if (m.getName().equalsIgnoreCase(callingMethodString)) {
                     method = m;
                     break;

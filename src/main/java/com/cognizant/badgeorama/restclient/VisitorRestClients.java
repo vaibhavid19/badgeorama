@@ -12,7 +12,9 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-
+/**
+ * Trying to follow RFC 2616 with these endpoints.
+ */
 @Component
 public class VisitorRestClients {
 
@@ -43,6 +45,15 @@ public class VisitorRestClients {
 
         ResponseEntity<Visitor> response = restTemplate.postForEntity(uri, modelDto.getVisitor(), Visitor.class);
         modelDto.setResponse(response);
+
+        return modelDto;
+    }
+
+    public ModelDto checkoutVisitor(ModelDto modelDto) {
+
+        URI uri = getURI(modelDto);
+
+        restTemplate.put(uri, modelDto.getVisitor());
 
         return modelDto;
     }

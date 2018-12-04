@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Main model object for Badge-O-Rama.  Represents a visitor.
  */
-// tag::code[]
+
 public class Visitor {
 
     private String phoneNumber;        // populated by user
@@ -355,4 +355,3 @@ public class Visitor {
         }
     }
 }
-// end::code[]

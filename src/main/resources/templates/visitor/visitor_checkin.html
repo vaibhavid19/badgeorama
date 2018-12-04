@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <!-- custom javascript must be below jquery library -->
     <script src="jquery-3.3.1.js"></script>
-    <script src="index.js"></script>
+    <script src="visitor_checkin.js"></script>
 </head>
 <body>
 
@@ -34,7 +35,24 @@
             <div class="w3-section">
                 <input id="phoneNumber" class="w3-input" type="text" th:field="*{phoneNumber}" required>
                 <label>Phone Number</label>
-                <input id="lookup" class="w3-right" type="button" value="Lookup" />
+                <input id="lookup" class="w3-right" type="button" value="Lookup"/>
+            </div>
+
+            <!-- Modal -->
+            <div id="modal1" class="w3-modal">
+                <div class="w3-modal-content w3-card-4 w3-animate-top">
+                    <header class="w3-container w3-theme-l1">
+                        <span onclick="document.getElementById('modal1').style.display='none'"
+                              class="w3-button w3-display-topright">×</span>
+                        <h4>What are you doing, Dave?!</h4>
+                        <h5><i class="far fa-dizzy fa-5x"></i></h5>
+                    </header>
+                    <div class="w3-padding">
+                        <p>You need to enter a phone number...</p>
+                    </div>
+                    <footer class="w3-container w3-theme-l1">
+                    </footer>
+                </div>
             </div>
 
             <div class="w3-section">
@@ -78,8 +96,9 @@
                 <label>Purpose of Visit</label>
             </div>
 
-            <div class="w3-container w3-theme">
-                <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+            <div class="w3-container w3-theme w3-center">
+                <p><input type="submit" value="Check-In"/> <input id="reset" type="reset" value="Reset Form"/> <input
+                        type="button" value="Back" onclick="window.location.href='/visitor'"/></p>
             </div>
 
         </form>

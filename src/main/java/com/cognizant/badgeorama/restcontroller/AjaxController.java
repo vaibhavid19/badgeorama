@@ -9,13 +9,11 @@ import com.cognizant.badgeorama.service.RouterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Date;
 
 
 @RestController
@@ -27,6 +25,11 @@ public class AjaxController {
 
     public AjaxController(RouterService routerService) {
         this.routerService = routerService;
+    }
+
+    @RequestMapping(value = "/time")
+    public String getTime(Model model) {
+        return new Date().toString();
     }
 
     @VisitorRestClient
@@ -68,7 +71,24 @@ public class AjaxController {
         // get response from service and return it
         HttpStatus httpStatus = modelDto.getResponse().getStatusCode();
 
-        return new ModelAndView("/visitor/visitor_checkin_success", httpStatus );
+        return new ModelAndView("/visitor/visitor_checkin_success", httpStatus);
+
+    }
+
+    @VisitorRestClient
+    @RequestMapping(method = RequestMethod.POST, value = "/visitor/checkout")
+    public ModelAndView checkoutVisitor(@ModelAttribute Visitor visitor) {
+
+        // Get the dto
+        ModelDto dto = getDto();
+
+        // create/populate visitor and set in dto
+        dto.setVisitor(visitor);
+
+        // make call to router service
+        routerService.route(dto);
+
+        return new ModelAndView("/visitor/visitor_checkout_success");
 
     }
 
