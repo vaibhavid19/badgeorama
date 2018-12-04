@@ -120,7 +120,7 @@ public class JacksonParserPOC {
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
-* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
+* Return --> Nothing
 
 * HTTPStatus --> **200**, if successful
 
@@ -140,7 +140,7 @@ public class JacksonParserPOC {
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus and Host information.
 
-* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
+* Return --> Nothing
 
 * HTTPStatus --> **200**, if successful
 
@@ -214,7 +214,7 @@ public class JacksonParserPOC {
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
-* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
+* Return --> Nothing
 
 * HTTPStatus --> **200**, if successful
 
@@ -232,7 +232,7 @@ public class JacksonParserPOC {
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
-* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
+* Return --> Nothing
 
 * HTTPStatus --> **200**, if successful
 
@@ -252,7 +252,7 @@ public class JacksonParserPOC {
 
 * @RequestBody --> **Visitor** - Visitor with updated VisitorStatus.
 
-* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
+* Return --> Nothing
 
 * HTTPStatus --> **200**, if successful
 
@@ -268,7 +268,7 @@ public class JacksonParserPOC {
 
 * @RequestBody --> **Visitor** - Visitor with updated/original host name/phone.
 
-* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated)
+* Return --> Nothing
 
 * HTTPStatus --> **200**, if successful
 
@@ -308,7 +308,7 @@ public class JacksonParserPOC {
 
 * @RequestBody --> **Visitor** - Updated visitor information.  Can be 1 or more fields updated.
 
-* Return --> **Visitor** - if there's an error, just return null or empty Visitor (no fields populated).
+* Return --> Nothing
 
 * HTTPStatus --> **200**, if successful
 
