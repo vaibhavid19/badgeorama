@@ -31,8 +31,8 @@ public class ModelDtoFactory {
         String callingMethodString;
         String fqn;
         try {
-            callingMethodString = callStack[2].getMethodName();
-            fqn = callStack[2].getClassName();
+            callingMethodString = callStack[3].getMethodName();
+            fqn = callStack[3].getClassName();
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new DtoException("Calling method not found.", e);
         }
