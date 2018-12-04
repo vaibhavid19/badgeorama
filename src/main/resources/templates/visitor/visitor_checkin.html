@@ -7,55 +7,74 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- custom javascript must be below jquery library -->
+    <script src="jquery-3.3.1.js"></script>
+    <script src="index.js"></script>
 </head>
 <body>
-<div class="w3-row-padding">
-    <div class="w3-half">
+
+<div class="w3-row-padding w3-center">
+
+    <div class="w3-third">
         <div class="w3-container w3-card-4 w3-theme">
-            <h1>Visitor Check In</h1>
+            <h1 class="w3-animate-zoom">Visitor Check In</h1>
         </div>
     </div>
 </div>
+
 <hr>
 <div class="w3-row-padding">
 
-    <div class="w3-half">
+    <div class="w3-third">
 
         <form class="w3-container w3-card-4" action="#" th:action="@{/visitor/register}" th:object="${visitor}"
               method="post">
 
             <div class="w3-section">
-                <input class="w3-input" type="text" th:field="*{phoneNumber}" required>
+                <input id="phoneNumber" class="w3-input" type="text" th:field="*{phoneNumber}" required>
                 <label>Phone Number</label>
+                <input id="lookup" class="w3-right" type="button" value="Lookup" />
             </div>
 
             <div class="w3-section">
-                <input class="w3-input" type="text" th:field="*{firstName}" required>
+                <div class="w3-half">
+                    <input id="cog-employee" class="w3-check" type="checkbox" onClick="enableBadgeNumber(this);">
+                    <label>Cognizant Employee?</label>
+                </div>
+                <div id="badgeNumberDiv" class="w3-half" hidden="hidden">
+                    <input id="badgeNumber" class="w3-input" type="text" th:field="*{badgeNumber}">
+                    <label for="badgeNumber">Cognizant Badge Number</label>
+                </div>
+            </div>
+
+            <div class="w3-section">
+                <input id="firstName" class="w3-input" type="text" th:field="*{firstName}" required>
                 <label>First Name</label>
             </div>
 
             <div class="w3-section">
-                <input class="w3-input" type="text" th:field="*{lastName}" required>
+                <input id="lastName" class="w3-input" type="text" th:field="*{lastName}" required>
                 <label>Last Name</label>
             </div>
 
             <div class="w3-section">
-                <input class="w3-input" type="text" th:field="*{company}" required>
+                <input id="company" class="w3-input" type="text" th:field="*{company}" required>
                 <label>Company</label>
             </div>
 
             <div class="w3-section">
-                <input class="w3-input" type="text" th:field="*{hostName}" required>
+                <input id="hostName" class="w3-input" type="text" th:field="*{hostName}" required>
                 <label>Host Name</label>
             </div>
 
             <div class="w3-section">
-                <input class="w3-input" type="text" th:field="*{hostPhone}" required>
+                <input id="hostMobilePhone" class="w3-input" type="text" th:field="*{hostPhone}" required>
                 <label>Host Mobile Phone Number</label>
             </div>
 
             <div class="w3-section">
-                <input class="w3-input" type="text" th:field="*{purposeOfVisit}" required>
+                <input id="purpose" class="w3-input" type="text" th:field="*{purposeOfVisit}" required>
                 <label>Purpose of Visit</label>
             </div>
 

@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@Controller
+@RestController
 public class AjaxController {
 
     private static final Logger logger = LoggerFactory.getLogger(AjaxController.class.getName());
@@ -30,25 +30,26 @@ public class AjaxController {
     }
 
     @VisitorRestClient
-    @RequestMapping(method = RequestMethod.GET, value = "/visitor/lookup")
-    public ModelAndView visitorLookup(@ModelAttribute Visitor visitor) {
+    @RequestMapping(method = RequestMethod.POST, value = "/visitor/lookup")
+    public Visitor visitorLookup(@RequestBody Visitor visitor) {
 
         // Get the dto
         ModelDto dto = getDto();
 
         // create/populate visitor and set in dto
+        //Visitor visitor = Visitor.builder().phoneNumber(phoneNumber).build();
         dto.setVisitor(visitor);
 
         // make call to router service
         ModelDto modelDto = routerService.route(dto);
 
         // get response from service and return it
-        HttpStatus httpStatus = modelDto.getResponse().getStatusCode();
-        Map<String, Visitor> map = new HashMap<>();
+        //HttpStatus httpStatus = modelDto.getResponse().getStatusCode();
+        //Map<String, Visitor> map = new HashMap<>();
         Visitor returnedVisitor = modelDto.getResponse().getBody();
-        map.put("visitor", returnedVisitor);
+        //map.put("visitor", returnedVisitor);
 
-        return new ModelAndView("visitor_checkin", map, httpStatus);
+        return returnedVisitor;
     }
 
     @VisitorRestClient
