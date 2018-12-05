@@ -21,8 +21,6 @@ public class HomeController {
     public String index(Model model) {
 
         model.addAttribute("location", properties.getLocation());
-        model.addAttribute("time", new Date());
-
 
         return "index";
     }

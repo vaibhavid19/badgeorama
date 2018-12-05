@@ -1,14 +1,33 @@
 package com.cognizant.badgeorama.webcontroller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.cognizant.badgeorama.configuration.GeneralProperties;
+import com.cognizant.badgeorama.model.Visitor;
+import com.cognizant.badgeorama.model.VisitorAdmin;
 
-// tag::code[]
+import org.apache.commons.text.WordUtils;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 @Controller
 public class MonitorController {
 
+    private final GeneralProperties properties;
+
+    public MonitorController(GeneralProperties properties) {
+        this.properties = properties;
+    }
+
     @RequestMapping(value = "/monitor")
-    public String monitor() {
+    public String monitor(Model model) {
+
+        model.addAttribute("location", properties.getLocation());
+
         return "monitor/monitor";
     }
 
@@ -18,10 +37,37 @@ public class MonitorController {
     }
 
     @RequestMapping(value = "/admin")
-    public String admin() {
-        return "monitor/visitor_admin";
+    public ModelAndView admin(Model model) {
+
+        // List of statuses for form
+        List<String> statuses = new ArrayList<>();
+        for (Visitor.VisitStatus status : Visitor.VisitStatus.values()) {
+            String statusDisplay = WordUtils.capitalizeFully(status.name(),'_');
+            statusDisplay = statusDisplay.replace("_"," ");
+            statuses.add(statusDisplay);
+        }
+        String[] statusArray = new String[statuses.size()];
+        statusArray = statuses.toArray(statusArray);
+
+        // List of visitor types for form
+        List<String> visitorTypes = new ArrayList<>();
+        for(Visitor.VisitorType type : Visitor.VisitorType.values()) {
+            String typeDisplay = WordUtils.capitalizeFully(type.name(),'_');
+            typeDisplay = typeDisplay.replace("_"," ");
+            visitorTypes.add(typeDisplay);
+        }
+        String[] typeArray = new String[visitorTypes.size()];
+        typeArray = visitorTypes.toArray(typeArray);
+
+
+        VisitorAdmin visitorAdmin = new VisitorAdmin();
+
+        model.addAttribute("listOfVisitorStatuses", statusArray);
+        model.addAttribute("listOfVisitorTypes", typeArray);
+
+        return new ModelAndView("monitor/visitor_admin","visitor", visitorAdmin);
+
     }
 
 
 }
-// end::code[]

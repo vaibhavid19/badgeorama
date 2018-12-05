@@ -1,10 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Visitor Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-light-blue.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="jquery-3.3.1.js"></script>
+    <script src="visitor_admin.js"></script>
 </head>
 <body>
-Visitor Admin
+
+<header class="w3-container w3-theme w3-padding">
+    <div class="w3-center">
+        <h1 class="w3-xxxlarge w3-animate-bottom">Visitor Administration</h1>
+    </div>
+    <div class="w3-center">
+        <p id="time"></p>
+    </div>
+</header>
+<div class="w3-container w3-theme-dark w3-padding"></div>
+
+<div class="w3-row-padding w3-margin-top">
+
+    <div class="w3-half">
+
+        <form class="w3-container w3-card-4" action="#" th:action="@{/visitor/admin}" th:object="${visitor}"
+              method="post">
+
+            <div class="w3-section">
+                <input id="badgeNumber" class="w3-input" type="text" th:field="*{badgeNumber}" >
+                <label for="badgeNumber">Badge Number</label>
+            </div>
+
+            <div class="w3-section">
+                <input id="phoneNumber" class="w3-input" type="text" th:field="*{phoneNumber}" required>
+                <label for="phoneNumber">Phone Number</label>
+            </div>
+
+            <div class="w3-section">
+                <input id="firstName" class="w3-input" type="text" th:field="*{firstName}" >
+                <label for="firstName">First Name</label>
+            </div>
+
+            <div class="w3-section">
+                <input id="lastName" class="w3-input" type="text" th:field="*{lastName}" >
+                <label>Last Name</label>
+            </div>
+
+            <div class="w3-section">
+                <input id="company" class="w3-input" type="text" th:field="*{company}" >
+                <label>Company</label>
+            </div>
+
+            <div class="w3-section">
+                <input id="purpose" class="w3-input" type="text" th:field="*{purposeOfVisit}" >
+                <label>Purpose of Visit</label>
+            </div>
+
+            <div class="w3-section">
+
+                <div class="w3-padding-16 w3-card">
+                    <div class="w3-row-padding">
+                        <label for="visitorStatuses" class="w3-left w3-third">Visitor Status:</label>
+                        <ul class="w3-ul w3-third w3-card" id="visitorStatuses">
+                            <li th:each="status: ${listOfVisitorStatuses}">
+                                <input type="radio"
+                                       th:field="*{visitorStatusSelectedValue}"
+                                       th:value="${status}"/>
+                                <label th:for="${#ids.prev('visitorStatusSelectedValue')}"
+                                       th:text="${status}"></label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="w3-section">
+
+                <div class="w3-padding-16 w3-card">
+                    <div class="w3-row-padding">
+                        <label for="visitorTypes" class="w3-left w3-third">Visitor Type:</label>
+                        <ul class="w3-ul w3-third w3-card" id="visitorTypes">
+                            <li th:each="visitorType: ${listOfVisitorTypes}">
+                                <input type="radio"
+                                       th:field="*{visitorTypeSelectedValue}"
+                                       th:value="${visitorType}"/>
+                                <label th:for="${#ids.prev('visitorTypeSelectedValue')}"
+                                       th:text="${visitorType}"></label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="w3-section">
+                <input id="hostName" class="w3-input" type="text" th:field="*{hostName}" >
+                <label>Host Name</label>
+            </div>
+
+            <div class="w3-section">
+                <input id="hostMobilePhone" class="w3-input" type="text" th:field="*{hostPhone}" >
+                <label>Host Mobile Phone</label>
+            </div>
+
+
+            <div class="w3-container w3-theme w3-center w3-card-4">
+                <p><input type="submit" value="Check-In"/> <input id="reset" type="reset" value="Reset Form"/> <input
+                        type="button" value="Back" onclick="window.location.href='/visitor'"/></p>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="w3-half">
+
+
+    </div>
+</div>
+
+<div class="w3-padding-16"></div>
+
+<footer class="w3-container w3-theme-dark">
+    <h5>Footer</h5>
+    <p class="w3-opacity">Footer information goes here</p>
+</footer>
+
 </body>
 </html>

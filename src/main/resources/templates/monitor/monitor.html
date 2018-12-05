@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html>
-<title>BadgeARaMaui Monitor Landing</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>BadgeARaMaui Monitor</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-light-blue.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="jquery-3.3.1.js"></script>
+<script src="monitor.js"></script>
 <body>
 
 <!-- Header -->
 <header class="w3-container w3-theme w3-padding" id="myHeader">
     <div class="w3-center">
-        <h4 class="w3-animate-right">Welcome to Cognizant, Mesa Arizona!</h4>
+        <h4 class="w3-animate-right"><p th:text="'Welcome to Cognizant, ' + ${location} + '!'"/></h4>
         <h1 class="w3-xxxlarge w3-animate-left">Visitor Monitoring</h1>
+        <p class="w3-center">Select a function to continue...</p>
     </div>
 </header>
 
@@ -27,7 +30,9 @@
 
 <!-- Footer -->
 <footer class="w3-container w3-theme-dark w3-padding-16">
-    <p class="w3-center">Select a function to continue.</p>
+    <div class="w3-center">
+        <p id="time"></p>
+    </div>
 </footer>
 
 </body>
