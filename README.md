@@ -266,6 +266,8 @@ public class JacksonParserPOC {
 
 *Requirement 2:*  Notify Host (using host phone number entered by guard or visitor).
 
+* **PUT** /visitor/notifyhost
+
 * @RequestBody --> **Visitor** - Visitor with updated/original host name/phone.
 
 * Return --> Nothing
