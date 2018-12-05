@@ -46,17 +46,17 @@
 
             <div class="w3-section">
                 <input id="lastName" class="w3-input" type="text" th:field="*{lastName}" >
-                <label>Last Name</label>
+                <label for="lastName">Last Name</label>
             </div>
 
             <div class="w3-section">
                 <input id="company" class="w3-input" type="text" th:field="*{company}" >
-                <label>Company</label>
+                <label for="company">Company</label>
             </div>
 
             <div class="w3-section">
                 <input id="purpose" class="w3-input" type="text" th:field="*{purposeOfVisit}" >
-                <label>Purpose of Visit</label>
+                <label for="purpose">Purpose of Visit</label>
             </div>
 
             <div class="w3-section">
@@ -99,18 +99,55 @@
 
             <div class="w3-section">
                 <input id="hostName" class="w3-input" type="text" th:field="*{hostName}" >
-                <label>Host Name</label>
+                <label for="hostName">Host Name</label>
             </div>
 
             <div class="w3-section">
                 <input id="hostMobilePhone" class="w3-input" type="text" th:field="*{hostPhone}" >
-                <label>Host Mobile Phone</label>
+                <label for="hostMobilePhone">Host Mobile Phone</label>
             </div>
 
+            <div class="w3-section">
+                <input id="checkedInBy" class="w3-input" type="text" th:field="*{checkedInBy}" >
+                <label for="checkedInBy">Checked In By</label>
+            </div>
+
+            <div class="w3-section">
+                <input id="checkedOutBy" class="w3-input" type="text" th:field="*{checkedOutBy}" >
+                <label for="checkedOutBy">Checked Out By</label>
+            </div>
+
+            <div class="w3-section">
+                <input id="registerDate" class="w3-input" type="text" th:field="*{registerDate}" disabled="disabled" >
+                <label for="registerDate">Registered Date</label>
+            </div>
+
+            <div class="w3-section">
+                <input id="checkedInDate" class="w3-input" type="text" th:field="*{checkedInDate}" disabled="disabled">
+                <label for="checkedInDate">Checked In Date</label>
+            </div>
+
+            <div class="w3-section">
+                <input id="checkedOutDate" class="w3-input" type="text" th:field="*{checkedOutDate}" disabled="disabled">
+                <label for="checkedOutDate">Checked Out Date</label>
+            </div>
+
+            <div class="w3-section">
+                <input id="active" class="w3-input" type="text" th:field="*{active}" disabled="disabled">
+                <label for="active">Record Active</label>
+            </div>
+
+            <div class="w3-section">
+                <input id="reasonForDeletion" class="w3-input" type="text" th:field="*{reasonForDeletion}" disabled="disabled">
+                <label for="reasonForDeletion">Reason for Deletion</label>
+            </div>
 
             <div class="w3-container w3-theme w3-center w3-card-4">
-                <p><input type="submit" value="Check-In"/> <input id="reset" type="reset" value="Reset Form"/> <input
-                        type="button" value="Back" onclick="window.location.href='/visitor'"/></p>
+                <div><input id="update" type="submit" value="Update"/>
+                     <input id="delete" type="button" value="Delete"/>
+                     <input id="reprint" type="button" value="Reprint Badge" onclick="window.location.href='/printbadge'"/>
+                     <input type="button" value="Back" onclick="window.location.href='/monitor'"/>
+                </div>
             </div>
 
         </form>

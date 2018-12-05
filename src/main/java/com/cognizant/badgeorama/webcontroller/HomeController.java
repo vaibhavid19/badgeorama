@@ -25,4 +25,11 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping(value = "/printbadge")
+    public String printBadge(Model model) {
+
+
+        return "printbadge";
+    }
+
 }
