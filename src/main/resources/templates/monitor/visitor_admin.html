@@ -30,7 +30,7 @@
               method="post">
 
             <div class="w3-section">
-                <input id="badgeNumber" class="w3-input" type="text" th:field="*{badgeNumber}" >
+                <input id="badgeNumber" name="badgeNumber" class="w3-input" type="text" th:value="${badgeNumber}" >
                 <label for="badgeNumber">Badge Number</label>
             </div>
 
@@ -156,6 +156,30 @@
 
     <div class="w3-half">
 
+
+        <form class="w3-container w3-card-4" action="#" th:action="@{/visitor/lookup}" th:object="${visitors}"
+              method="get">
+
+            <div class="w3-section">
+
+                <div class="w3-padding-16 w3-card">
+                    <div class="w3-row-padding">
+                        <label for="visitorTypes" class="w3-left w3-third">Visitors:</label>
+                        <ul class="w3-ul w3-third w3-card" id="visitorList">
+                            <li th:each="visitor: ${visitors.visitors}">
+                                <input type="radio"
+                                       th:field="*{selected}"
+                                       th:value="${visitor}"/>
+                                <label th:for="${#ids.prev('selected')}"
+                                       th:text="${visitor}"></label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
 
     </div>
 </div>

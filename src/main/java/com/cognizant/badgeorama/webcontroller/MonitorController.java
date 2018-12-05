@@ -4,9 +4,11 @@ import com.cognizant.badgeorama.configuration.GeneralProperties;
 import com.cognizant.badgeorama.model.Visitor;
 import com.cognizant.badgeorama.model.VisitorAdmin;
 
+import com.cognizant.badgeorama.model.Visitors;
 import org.apache.commons.text.WordUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,6 +23,14 @@ public class MonitorController {
 
     public MonitorController(GeneralProperties properties) {
         this.properties = properties;
+    }
+
+    @ModelAttribute("visitors")
+    public Visitors getVisitor() {
+
+        Visitors visitors = new Visitors();
+
+        return visitors;
     }
 
     @RequestMapping(value = "/monitor")
@@ -64,6 +74,8 @@ public class MonitorController {
 
         model.addAttribute("listOfVisitorStatuses", statusArray);
         model.addAttribute("listOfVisitorTypes", typeArray);
+
+        model.addAttribute("badgeNumber","1234");
 
         return new ModelAndView("monitor/visitor_admin","visitor", visitorAdmin);
 

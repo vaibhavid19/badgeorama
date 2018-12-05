@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
+import java.util.List;
 
 
 @RestController
@@ -42,17 +43,13 @@ public class AjaxController {
         ModelDto dto = getDto();
 
         // create/populate visitor and set in dto
-        //Visitor visitor = Visitor.builder().phoneNumber(phoneNumber).build();
         dto.setVisitor(visitor);
 
         // make call to router service
         ModelDto modelDto = routerService.route(dto);
 
         // get response from service and return it
-        //HttpStatus httpStatus = modelDto.getResponse().getStatusCode();
-        //Map<String, Visitor> map = new HashMap<>();
         Visitor returnedVisitor = modelDto.getResponse().getBody();
-        //map.put("visitor", returnedVisitor);
 
         return returnedVisitor;
     }
@@ -125,14 +122,14 @@ public class AjaxController {
 
         // set selected status
         String selectedStatus = visitorAdmin.getVisitorStatusSelectedValue();
-        selectedStatus = selectedStatus.replace(" ","_");
+        selectedStatus = selectedStatus.replace(" ", "_");
         selectedStatus = selectedStatus.toUpperCase();
         Visitor.VisitStatus status = Visitor.VisitStatus.valueOf(selectedStatus);
         visitor.setStatus(status);
 
         // set selected visit type
         String selectedType = visitorAdmin.getVisitorTypeSelectedValue();
-        selectedType = selectedType.replace(" ","_");
+        selectedType = selectedType.replace(" ", "_");
         selectedType = selectedType.toUpperCase();
         Visitor.VisitorType visitorType = Visitor.VisitorType.valueOf(selectedType);
         visitor.setVisitorType(visitorType);
@@ -142,10 +139,42 @@ public class AjaxController {
         // make call to router service
         routerService.route(dto);
 
-        return new ModelAndView("/monitor/visitor_admin_success",HttpStatus.OK);
+        return new ModelAndView("/monitor/visitor_admin_success", HttpStatus.OK);
 
     }
 
+    @MonitorRestClient
+    @RequestMapping(method = RequestMethod.GET, value = "/monitor/visitors")
+    public List<Visitor> getVisitors() {
+
+
+
+        return null;
+    }
+
+    @MonitorRestClient
+    @RequestMapping(method = RequestMethod.GET, value = "/monitor/visitors/waiting")
+    public List<Visitor> getWaitingVisitors() {
+
+
+        return null;
+    }
+
+    @MonitorRestClient
+    @RequestMapping(method = RequestMethod.GET, value = "/monitor/visitors/checkedin")
+    public List<Visitor> getCheckedInVisitors() {
+
+
+        return null;
+    }
+
+    @MonitorRestClient
+    @RequestMapping(method = RequestMethod.GET, value = "/monitor/visitors/checkedout")
+    public List<Visitor> getCheckedOutVisitors() {
+
+
+        return null;
+    }
 
 
     private ModelDto getDto() {
