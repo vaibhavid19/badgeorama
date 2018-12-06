@@ -1,0 +1,15 @@
+{
+  "name": "badgearamaui",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
