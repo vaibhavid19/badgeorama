@@ -3,6 +3,8 @@ package com.cognizant.badgeorama.model.dto;
 import com.cognizant.badgeorama.model.Visitor;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+
 public interface ModelDto {
 
     public ResponseEntity<Visitor> getResponse();
@@ -16,5 +18,9 @@ public interface ModelDto {
     public DtoRoute getDtoRoute();
 
     public void setDtoRoute(DtoRoute dtoRoute);
+
+    public List<Visitor> getVisitors();
+
+    public void setVisitors(List<Visitor> visitors);
 
 }

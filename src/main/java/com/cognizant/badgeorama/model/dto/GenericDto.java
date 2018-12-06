@@ -3,11 +3,14 @@ package com.cognizant.badgeorama.model.dto;
 import com.cognizant.badgeorama.model.Visitor;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+
 public class GenericDto implements ModelDto {
 
     protected ResponseEntity<Visitor> response;
     protected Visitor visitor;
     protected DtoRoute dtoRoute;
+    protected List<Visitor> visitors;
 
     public GenericDto() {
     }
@@ -40,6 +43,16 @@ public class GenericDto implements ModelDto {
     @Override
     public void setDtoRoute(DtoRoute dtoRoute) {
         this.dtoRoute = dtoRoute;
+    }
+
+    @Override
+    public List<Visitor> getVisitors() {
+        return this.visitors;
+    }
+
+    @Override
+    public void setVisitors(List<Visitor> visitors) {
+        this.visitors = visitors;
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.cognizant.badgeorama.restclient;
 
 import com.cognizant.badgeorama.model.Visitor;
 import com.cognizant.badgeorama.model.dto.ModelDto;
+import com.cognizant.badgeorama.util.RestClientUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
@@ -31,7 +32,7 @@ public class VisitorRestClients {
     public ModelDto visitorLookup(ModelDto modelDto) {
 
         String phoneNumber = modelDto.getVisitor().getPhoneNumber();
-        URI uri = getURIWithPathVariable(modelDto, phoneNumber);
+        URI uri = getURI(modelDto, phoneNumber);
 
         ResponseEntity<Visitor> response = restTemplate.getForEntity(uri, Visitor.class);
         modelDto.setResponse(response);
@@ -60,45 +61,12 @@ public class VisitorRestClients {
 
     private URI getURI(ModelDto modelDto) {
 
-        String protocol = env.getProperty("rest.client.protocol");
-        String host = env.getProperty("rest.client.host");
-        int port = Integer.parseInt(env.getProperty("rest.client.port"));
-
-        String path = modelDto.getDtoRoute().getRestEndpoint();
-        String auth = null;
-        String fragment = null;
-        String query = null;
-        URI uri = null;
-        try {
-            uri = new URI(protocol, auth, host, port, path, query, fragment);
-        } catch (URISyntaxException e) {
-            logger.error("URI Error", e);
-        }
-
-        return uri;
+        return getURI(modelDto, null);
     }
 
-    private URI getURIWithPathVariable(ModelDto modelDto, String variable) {
+    private URI getURI(ModelDto modelDto, String variable) {
 
-        String protocol = env.getProperty("rest.client.protocol");
-        String host = env.getProperty("rest.client.host");
-        int port = Integer.parseInt(env.getProperty("rest.client.port"));
-
-        String endpoint = modelDto.getDtoRoute().getRestEndpoint();
-        String path = new StringBuilder()
-                .append(endpoint)
-                .append(endpoint.endsWith("/") ? "" : "/")
-                .append(variable).toString();
-        String auth = null;
-        String fragment = null;
-        String query = null;
-        URI uri = null;
-        try {
-            uri = new URI(protocol, auth, host, port, path, query, fragment);
-        } catch (URISyntaxException e) {
-            logger.error("URI Error", e);
-        }
-
-        return uri;
+        return RestClientUtility.getUri(modelDto, variable, env);
     }
+
 }

@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -147,33 +148,59 @@ public class AjaxController {
     @RequestMapping(method = RequestMethod.GET, value = "/monitor/visitors")
     public List<Visitor> getVisitors() {
 
+        List<Visitor> waiting = getWaitingVisitors();
+        List<Visitor> in = getCheckedInVisitors();
+        List<Visitor> out = getCheckedOutVisitors();
 
+        List<Visitor> all = new ArrayList<>();
 
-        return null;
+        all.addAll(waiting);
+        all.addAll(in);
+        all.addAll(out);
+
+        return all;
     }
 
     @MonitorRestClient
     @RequestMapping(method = RequestMethod.GET, value = "/monitor/visitors/waiting")
     public List<Visitor> getWaitingVisitors() {
 
+        // Get the dto
+        ModelDto dto = getDto();
 
-        return null;
+        ModelDto modelDto = routerService.route(dto);
+
+        List<Visitor> visitors = modelDto.getVisitors();
+
+        return visitors;
     }
 
     @MonitorRestClient
     @RequestMapping(method = RequestMethod.GET, value = "/monitor/visitors/checkedin")
     public List<Visitor> getCheckedInVisitors() {
 
+        // Get the dto
+        ModelDto dto = getDto();
 
-        return null;
+        ModelDto modelDto = routerService.route(dto);
+
+        List<Visitor> visitors = modelDto.getVisitors();
+
+        return visitors;
     }
 
     @MonitorRestClient
     @RequestMapping(method = RequestMethod.GET, value = "/monitor/visitors/checkedout")
     public List<Visitor> getCheckedOutVisitors() {
 
+        // Get the dto
+        ModelDto dto = getDto();
 
-        return null;
+        ModelDto modelDto = routerService.route(dto);
+
+        List<Visitor> visitors = modelDto.getVisitors();
+
+        return visitors;
     }
 
 
