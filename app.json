@@ -3,10 +3,57 @@
   "scripts": {
   },
   "env": {
+
+    "app.location": {
+      "description": "",
+      "value": "Mesa, Arizona"
+    },
+    "rest.client.protocol": {
+      "description": "",
+      "value": "http"
+    },
+    "rest.client.host": {
+      "description": "",
+      "value": "localhost"
+    },
+    "rest.client.port": {
+      "description": "",
+      "value": "80"
+    },
+    "route.endpoint.visitorLookup": {
+      "description": "",
+      "value": "/visitor/lookup"
+    },
+    "route.endpoint.registerVisitor": {
+      "description": "",
+      "value": "/visitor/register"
+    },
+    "route.endpoint.checkoutVisitor": {
+      "description": "",
+      "value": "/visitor/checkout"
+    },
+    "route.endpoint.visitorAdmin": {
+      "description": "",
+      "value": "/visitor/update"
+    },
+    "route.endpoint.getWaitingVisitors": {
+      "description": "",
+      "value": "/visitors/waiting"
+    },
+    "route.endpoint.getCheckedInVisitors": {
+      "description": "",
+      "value": "/visitors/checkedin"
+    },
+    "route.endpoint.getCheckedOutVisitors": {
+      "description": "",
+      "value": "/visitors/checkedout"
+    }
+
   },
   "formation": {
   },
   "addons": [
+
 
   ],
   "buildpacks": [
