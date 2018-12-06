@@ -152,7 +152,7 @@ public class JacksonParserPOC {
 
 ###### Scenario 1 - System Update - Waiting
 
-*Scenario 1:*  System needs to update list of Visitors in *Waiting* status list.
+*Scenario 1:*  System needs to update list of Visitors whos status is *WAITING*, *UNREGISTERED*, and *WAITING_TIMEOUT*.
 
 *Requirement 1:*  Return list of Visitors who's status is WAITING or UNVERIFIED
 

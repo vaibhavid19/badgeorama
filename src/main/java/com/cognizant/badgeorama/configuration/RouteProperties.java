@@ -20,4 +20,5 @@ public class RouteProperties {
     public void setEndpoint(Map<String, String> endpoint) {
         this.endpoint = endpoint;
     }
+
 }
