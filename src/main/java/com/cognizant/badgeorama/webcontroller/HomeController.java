@@ -1,26 +1,24 @@
 package com.cognizant.badgeorama.webcontroller;
 
-import com.cognizant.badgeorama.configuration.GeneralProperties;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Date;
 
 
 @Controller
 public class HomeController {
 
-    private final GeneralProperties properties;
+    private final Environment env;
 
-    public HomeController(GeneralProperties properties) {
-        this.properties = properties;
+    public HomeController(Environment env) {
+        this.env = env;
     }
 
     @RequestMapping(value = "/")
     public String index(Model model) {
 
-        model.addAttribute("location", properties.getLocation());
+        model.addAttribute("location", env.getProperty("process.env.LOCATION"));
 
         return "index";
     }

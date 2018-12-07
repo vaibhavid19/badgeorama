@@ -14,9 +14,9 @@ public class RestClientUtility {
 
     public static URI getUri(ModelDto modelDto, String variable, Environment env) {
 
-        String protocol = env.getProperty("rest.client.protocol");
-        String host = env.getProperty("rest.client.host");
-        int port = Integer.parseInt(env.getProperty("rest.client.port"));
+        String protocol = env.getProperty("process.env.PROTOCOL");
+        String host = env.getProperty("process.env.HOST");
+        int port = Integer.parseInt(env.getProperty("process.env.PORT"));
 
         String endpoint = modelDto.getDtoRoute().getRestEndpoint();
         StringBuilder builder = new StringBuilder(endpoint);

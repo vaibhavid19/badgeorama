@@ -7,7 +7,7 @@ public class VisitorAdmin extends Visitor {
     private String visitorStatusSelectedValue;
     private String visitorTypeSelectedValue;
 
-    public VisitorAdmin(){
+    public VisitorAdmin() {
 
     }
 

@@ -1,8 +1,8 @@
 package com.cognizant.badgeorama.service;
 
-import com.cognizant.badgeorama.configuration.RouteProperties;
 import org.springframework.core.env.AbstractEnvironment;
 import org.springframework.core.env.Environment;
+import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.support.ResourcePropertySource;
 import org.springframework.stereotype.Service;
@@ -28,24 +28,24 @@ public class RouteService {
         endpoints = new HashMap<>();
 
         Map<String, Object> map = new HashMap();
-        for(Iterator it = ((AbstractEnvironment) this.env).getPropertySources().iterator(); it.hasNext(); ) {
+        for (Iterator it = ((AbstractEnvironment) this.env).getPropertySources().iterator(); it.hasNext(); ) {
             PropertySource propertySource = (PropertySource) it.next();
-            if (propertySource instanceof ResourcePropertySource) {
-                map.putAll(((ResourcePropertySource) propertySource).getSource());
+            if (propertySource instanceof MapPropertySource) {
+                map.putAll(((MapPropertySource) propertySource).getSource());
             }
         }
 
         // we only want the last part of the environment key as a key in our route table
         for (String key : map.keySet()) {
-            if (key.startsWith("route.endpoint")) {
+            if (key.contains("ROUTE_")) {
 
                 String[] tokens = key.split("[.]");
-                String newKey = tokens[tokens.length -1];
+                String[] tokens2 = tokens[tokens.length-1].split("_");
+                String newKey = tokens[tokens2.length - 1];
 
-                endpoints.put(newKey, (String) map.get(key));
+                endpoints.put(newKey, map.get(key).toString());
             }
         }
-
 
 
     }

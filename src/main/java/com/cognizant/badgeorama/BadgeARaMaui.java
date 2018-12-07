@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * The following tutorials were helpful in making this application:
- *
+ * <p>
  * https://www.baeldung.com/thymeleaf-in-spring-mvc
  * https://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html
  * https://www.mkyong.com/spring-boot/spring-boot-hello-world-example-thymeleaf/

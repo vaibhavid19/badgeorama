@@ -1,7 +1,7 @@
 package com.cognizant.badgeorama.webcontroller;
 
-import com.cognizant.badgeorama.configuration.GeneralProperties;
 import com.cognizant.badgeorama.model.Visitor;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class VisitorController {
 
-    private final GeneralProperties properties;
+    private final Environment env;
 
-    public VisitorController(GeneralProperties properties) {
-        this.properties = properties;
+    public VisitorController(Environment env) {
+        this.env = env;
     }
 
     @RequestMapping(value = "/visitor")
     public String visitor(Model model) {
 
-        model.addAttribute("location", properties.getLocation());
+        model.addAttribute("location", env.getProperty("process.env.LOCATION"));
 
         return "visitor/visitor";
     }

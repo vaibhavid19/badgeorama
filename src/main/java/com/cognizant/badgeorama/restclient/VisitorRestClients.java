@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 
 /**
  * Trying to follow RFC 2616 with these endpoints.
