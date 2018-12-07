@@ -3,26 +3,22 @@
   "scripts": {
   },
   "env": {
-
-    "app.location":"Mesa, Arizona",
-    "rest.client.protocol":"http",
-    "rest.client.host":"localhost",
-    "rest.client.port":"80",
-    "route.endpoint.visitorLookup":"/visitor/lookup",
-    "route.endpoint.registerVisitor":"/visitor/register",
-    "route.endpoint.checkoutVisitor":"/visitor/checkout",
-    "route.endpoint.visitorAdmin":"/visitor/update",
-    "route.endpoint.getWaitingVisitors":"/visitors/waiting",
-    "route.endpoint.getCheckedInVisitors":"/visitors/checkedin",
-    "route.endpoint.getCheckedOutVisitors":"/visitors/checkedout",
-
-    }
-
+    "LOCATION":"Mesa, Arizona",
+    "PROTOCOL":"http",
+    "HOST":"localhost",
+    "PORT":"80",
+    "ROUTE_visitorLookup":"/visitor/lookup",
+    "ROUTE_registerVisitor":"/visitor/register",
+    "ROUTE_checkoutVisitor":"/visitor/checkout",
+    "ROUTE_visitorAdmin":"/visitor/update",
+    "ROUTE_getWaitingVisitors":"/visitors/waiting",
+    "ROUTE_getCheckedInVisitors":"/visitors/checkedin",
+    "ROUTE_getCheckedOutVisitors":"/visitors/checkedout"
   },
   "formation": {
+
   },
   "addons": [
-
 
   ],
   "buildpacks": [

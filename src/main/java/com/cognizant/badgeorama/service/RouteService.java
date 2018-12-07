@@ -41,7 +41,7 @@ public class RouteService {
 
                 String[] tokens = key.split("[.]");
                 String[] tokens2 = tokens[tokens.length-1].split("_");
-                String newKey = tokens[tokens2.length - 1];
+                String newKey = tokens2[tokens2.length - 1];
 
                 endpoints.put(newKey, map.get(key).toString());
             }

@@ -19,7 +19,8 @@ public class RestClientUtility {
         int port = Integer.parseInt(env.getProperty("process.env.PORT"));
 
         String endpoint = modelDto.getDtoRoute().getRestEndpoint();
-        StringBuilder builder = new StringBuilder(endpoint);
+        StringBuilder builder = new StringBuilder();
+        builder.append(endpoint);
         if (variable != null) {
             builder.append(endpoint.endsWith("/") ? "" : "/");
             builder.append(variable);

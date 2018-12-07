@@ -45,7 +45,7 @@ public class RouterService {
                 } catch (IllegalAccessException e) {
                     logger.error("IllegalAccessException", e);
                 } catch (InvocationTargetException e) {
-                    logger.error("InvocationTargetException", e);
+                    logger.error("InvocationTargetException: error calling method [" + method.getName() + "]", e);
                 }
             }
 

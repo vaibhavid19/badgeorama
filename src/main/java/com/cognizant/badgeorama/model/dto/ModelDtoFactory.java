@@ -114,7 +114,36 @@ public class ModelDtoFactory {
             dto.setDtoRoute(dtoRoute);
         }
 
+        if(!validDtoRoute(dto)){
+            logger.error("Invalid Dto Route!  Probably caused by bad environment keys.  Check environment variable names.");
+        }
+
         return dto;
+    }
+
+    private static boolean validDtoRoute(ModelDto modelDto) {
+
+        boolean valid = true;
+
+        DtoRoute route = modelDto.getDtoRoute();
+
+        if(route.getRouteType() == null) {
+            valid = false;
+        }
+
+        if(route.getRestEndpointMethodName() == null) {
+            valid = false;
+        }
+
+        if(route.getRestEndpoint() == null) {
+            valid = false;
+        }
+
+        if(route.getUiEndpointMethodName() == null) {
+            valid = false;
+        }
+
+        return valid;
     }
 
 
