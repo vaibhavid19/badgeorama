@@ -83,7 +83,7 @@ public class AjaxController {
             logger.error(findDtoIssue(dto));
         }
 
-        return new ModelAndView("/visitor/visitor_checkin_success", httpStatus);
+        return new ModelAndView("visitor/visitor_checkin_success", httpStatus);
 
     }
 
@@ -101,7 +101,7 @@ public class AjaxController {
         // make call to router service
         routerService.route(dto);
 
-        return new ModelAndView("/visitor/visitor_checkout_success", HttpStatus.OK);
+        return new ModelAndView("visitor/visitor_checkout_success", HttpStatus.OK);
 
     }
 
