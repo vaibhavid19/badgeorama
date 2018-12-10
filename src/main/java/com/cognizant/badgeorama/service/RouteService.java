@@ -79,6 +79,7 @@ public class RouteService {
                 String newKey = tokens2[tokens2.length - 1];
 
                 endpoints.put(newKey, map.get(key).toString());
+                counter++;
             }
         }
         logger.info("Saved " + counter + " PATH keys from systemEnvironment");
