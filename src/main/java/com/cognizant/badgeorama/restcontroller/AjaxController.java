@@ -50,7 +50,13 @@ public class AjaxController {
         ModelDto modelDto = routerService.route(dto);
 
         // get response from service and return it
-        Visitor returnedVisitor = modelDto.getResponse().getBody();
+        Visitor returnedVisitor = null;
+        if (validDto(dto)) {
+            returnedVisitor = modelDto.getResponse().getBody();
+        } else {
+            logger.error(findDtoIssue(dto));
+        }
+
 
         return returnedVisitor;
     }
@@ -70,7 +76,12 @@ public class AjaxController {
         ModelDto modelDto = routerService.route(dto);
 
         // get response from service and return it
-        HttpStatus httpStatus = modelDto.getResponse().getStatusCode();
+        HttpStatus httpStatus = HttpStatus.OK;
+        if (validDto(dto)) {
+            httpStatus = modelDto.getResponse().getStatusCode();
+        } else {
+            logger.error(findDtoIssue(dto));
+        }
 
         return new ModelAndView("/visitor/visitor_checkin_success", httpStatus);
 
@@ -226,6 +237,25 @@ public class AjaxController {
             logger.error("Problem getting ModelDto.", e);
         }
         return dto;
+    }
+
+    private String findDtoIssue(ModelDto dto) {
+
+        String message = "Response DTO is valid.";
+
+        if (dto.getResponse() == null) {
+
+            message = "Response is null";
+
+        }
+
+        return message;
+    }
+
+    private boolean validDto(ModelDto dto) {
+
+        return (dto.getResponse() != null) ? true : false;
+
     }
 
 
