@@ -17,8 +17,8 @@ public class RestClientUtility {
         String protocol = env.getProperty("process.env.PROTOCOL");
         String host = env.getProperty("process.env.HOST");
         int port = 0;
-        if("https".equalsIgnoreCase(protocol)) {
-            port=443;
+        if ("https".equalsIgnoreCase(protocol)) {
+            port = 443;
         } else {
             port = Integer.parseInt(env.getProperty("process.env.PORT"));
         }

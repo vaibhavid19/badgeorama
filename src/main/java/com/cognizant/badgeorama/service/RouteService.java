@@ -6,7 +6,6 @@ import org.springframework.core.env.AbstractEnvironment;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.PropertySource;
-import org.springframework.core.io.support.ResourcePropertySource;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -43,7 +42,7 @@ public class RouteService {
         }
 
         // we only want the last part of the environment key as a key in our route table
-        int counter=0;
+        int counter = 0;
         for (String key : map.keySet()) {
 
             if (key.contains("ROUTE_")) {
@@ -69,7 +68,7 @@ public class RouteService {
         }
 
         // we only want the last part of the environment key as a key in our route table
-        counter=0;
+        counter = 0;
         for (String key : map.keySet()) {
 
             if (key.contains("ROUTE_")) {

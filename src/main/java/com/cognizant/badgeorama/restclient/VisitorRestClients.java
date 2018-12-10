@@ -67,7 +67,6 @@ public class VisitorRestClients {
     }
 
 
-
     public ModelDto checkoutVisitor(ModelDto modelDto) {
 
         URI uri = getURI(modelDto);
@@ -104,7 +103,7 @@ public class VisitorRestClients {
 
     private void displayResponse(ResponseEntity<Visitor> response) {
 
-        if(response != null) {
+        if (response != null) {
 
             String json = null;
             ObjectMapper objectMapper = new ObjectMapper();

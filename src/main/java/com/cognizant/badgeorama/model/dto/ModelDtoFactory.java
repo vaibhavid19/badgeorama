@@ -114,7 +114,7 @@ public class ModelDtoFactory {
             dto.setDtoRoute(dtoRoute);
         }
 
-        if(!validDtoRoute(dto)){
+        if (!validDtoRoute(dto)) {
             logger.error("Invalid Dto Route!  Probably caused by bad environment keys.  Check environment variable names.");
         }
 
@@ -127,19 +127,19 @@ public class ModelDtoFactory {
 
         DtoRoute route = modelDto.getDtoRoute();
 
-        if(route.getRouteType() == null) {
+        if (route.getRouteType() == null) {
             valid = false;
         }
 
-        if(route.getRestEndpointMethodName() == null) {
+        if (route.getRestEndpointMethodName() == null) {
             valid = false;
         }
 
-        if(route.getRestEndpoint() == null) {
+        if (route.getRestEndpoint() == null) {
             valid = false;
         }
 
-        if(route.getUiEndpointMethodName() == null) {
+        if (route.getUiEndpointMethodName() == null) {
             valid = false;
         }
 
