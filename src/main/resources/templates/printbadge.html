@@ -13,7 +13,17 @@
     <script src="index.js"></script>
 </head>
 <body>
-Badge
-
+<div class="w3-third">
+    <div class="w3-container w3-card-4 w3-center w3-theme">
+        <div class="w3-padding-16">
+            <header id="title" class="w3-xlarge">Employee of the Year</header>
+        </div>
+        <div class="w3-container w3-padding-16 w3-card w3-theme-light">
+            <img src="../images/minion.png" alt="Badge" style="width:100%">
+        </div>
+        <div id="name" class="w3-center w3-padding-16 w3-xlarge" th:text="${visitor.firstName}">Name</div>
+        <div id="badgeNumber" class="w3-center w3-padding-16">123456</div>
+    </div>
+</div>
 </body>
 </html>

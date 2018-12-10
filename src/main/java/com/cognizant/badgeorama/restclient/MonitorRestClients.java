@@ -30,6 +30,7 @@ public class MonitorRestClients {
 
         URI uri = getURI(modelDto);
 
+        logger.info("Hitting endpoint " + uri.toASCIIString());
         restTemplate.put(uri, modelDto.getVisitor());
 
         return modelDto;
@@ -69,6 +70,7 @@ public class MonitorRestClients {
 
         URI uri = getURI(modelDto);
 
+        logger.info("Hitting endpoint " + uri.toASCIIString());
         ResponseEntity<List> response = restTemplate.getForEntity(uri, List.class);
 
         List<Visitor> visitors = response.getBody();

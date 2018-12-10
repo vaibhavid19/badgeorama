@@ -63,6 +63,7 @@ public class AjaxController {
         ModelDto dto = getDto();
 
         // create/populate visitor and set in dto
+        visitor.setStatus(Visitor.VisitStatus.UNVERIFIED);
         dto.setVisitor(visitor);
 
         // make call to router service
@@ -83,6 +84,7 @@ public class AjaxController {
         ModelDto dto = getDto();
 
         // create/populate visitor and set in dto
+        visitor.setStatus(Visitor.VisitStatus.OUT);
         dto.setVisitor(visitor);
 
         // make call to router service
@@ -201,6 +203,16 @@ public class AjaxController {
         List<Visitor> visitors = modelDto.getVisitors();
 
         return visitors;
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value="/printbadge")
+    public ModelAndView printBadge(@RequestBody Visitor visitor, Model model) {
+
+
+        model.addAttribute("visitor", visitor);
+        return new ModelAndView("/printbadge", HttpStatus.OK);
+
+
     }
 
 

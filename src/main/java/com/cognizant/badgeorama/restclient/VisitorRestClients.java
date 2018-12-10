@@ -33,6 +33,7 @@ public class VisitorRestClients {
         String phoneNumber = modelDto.getVisitor().getPhoneNumber();
         URI uri = getURI(modelDto, phoneNumber);
 
+        logger.info("Hitting endpoint " + uri.toASCIIString());
         ResponseEntity<Visitor> response = restTemplate.getForEntity(uri, Visitor.class);
         modelDto.setResponse(response);
 
@@ -43,6 +44,7 @@ public class VisitorRestClients {
 
         URI uri = getURI(modelDto);
 
+        logger.info("Hitting endpoint " + uri.toASCIIString());
         ResponseEntity<Visitor> response = restTemplate.postForEntity(uri, modelDto.getVisitor(), Visitor.class);
         modelDto.setResponse(response);
 

@@ -1,7 +1,9 @@
 package com.cognizant.badgeorama;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 
 /**
  * The following tutorials were helpful in making this application:
@@ -12,8 +14,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * https://spring.io/guides/gs/serving-web-content/
  * https://www.boraji.com/spring-mvc-5-hello-world-example-with-thymeleaf-template
  * https://o7planning.org/en/11545/spring-boot-and-thymeleaf-tutorial#a10849074
+ * https://www.baeldung.com/spring-boot-custom-error-page
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = {ErrorMvcAutoConfiguration.class})
 public class BadgeARaMaui {
     public static void main(String[] args) {
         SpringApplication.run(BadgeARaMaui.class, args);
