@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-light-blue.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="jquery-3.3.1.js"></script>
     <script src="visitor_admin.js"></script>
 </head>
@@ -30,7 +31,7 @@
               method="post">
 
             <div class="w3-section">
-                <input id="badgeNumber" name="badgeNumber" class="w3-input" type="text" th:value="${badgeNumber}" >
+                <input id="badgeNumber" name="badgeNumber" class="w3-input" type="text" th:value="*{badgeNumber}">
                 <label for="badgeNumber">Badge Number</label>
             </div>
 
@@ -40,22 +41,22 @@
             </div>
 
             <div class="w3-section">
-                <input id="firstName" class="w3-input" type="text" th:field="*{firstName}" >
+                <input id="firstName" class="w3-input" type="text" th:field="*{firstName}">
                 <label for="firstName">First Name</label>
             </div>
 
             <div class="w3-section">
-                <input id="lastName" class="w3-input" type="text" th:field="*{lastName}" >
+                <input id="lastName" class="w3-input" type="text" th:field="*{lastName}">
                 <label for="lastName">Last Name</label>
             </div>
 
             <div class="w3-section">
-                <input id="company" class="w3-input" type="text" th:field="*{company}" >
+                <input id="company" class="w3-input" type="text" th:field="*{company}">
                 <label for="company">Company</label>
             </div>
 
             <div class="w3-section">
-                <input id="purpose" class="w3-input" type="text" th:field="*{purposeOfVisit}" >
+                <input id="purpose" class="w3-input" type="text" th:field="*{purposeOfVisit}">
                 <label for="purpose">Purpose of Visit</label>
             </div>
 
@@ -98,27 +99,27 @@
             </div>
 
             <div class="w3-section">
-                <input id="hostName" class="w3-input" type="text" th:field="*{hostName}" >
+                <input id="hostName" class="w3-input" type="text" th:field="*{hostName}">
                 <label for="hostName">Host Name</label>
             </div>
 
             <div class="w3-section">
-                <input id="hostMobilePhone" class="w3-input" type="text" th:field="*{hostPhone}" >
+                <input id="hostMobilePhone" class="w3-input" type="text" th:field="*{hostPhone}">
                 <label for="hostMobilePhone">Host Mobile Phone</label>
             </div>
 
             <div class="w3-section">
-                <input id="checkedInBy" class="w3-input" type="text" th:field="*{checkedInBy}" >
+                <input id="checkedInBy" class="w3-input" type="text" th:field="*{checkedInBy}">
                 <label for="checkedInBy">Checked In By</label>
             </div>
 
             <div class="w3-section">
-                <input id="checkedOutBy" class="w3-input" type="text" th:field="*{checkedOutBy}" >
+                <input id="checkedOutBy" class="w3-input" type="text" th:field="*{checkedOutBy}">
                 <label for="checkedOutBy">Checked Out By</label>
             </div>
 
             <div class="w3-section">
-                <input id="registerDate" class="w3-input" type="text" th:field="*{registerDate}" disabled="disabled" >
+                <input id="registerDate" class="w3-input" type="text" th:field="*{registerDate}" disabled="disabled">
                 <label for="registerDate">Registered Date</label>
             </div>
 
@@ -128,7 +129,8 @@
             </div>
 
             <div class="w3-section">
-                <input id="checkedOutDate" class="w3-input" type="text" th:field="*{checkedOutDate}" disabled="disabled">
+                <input id="checkedOutDate" class="w3-input" type="text" th:field="*{checkedOutDate}"
+                       disabled="disabled">
                 <label for="checkedOutDate">Checked Out Date</label>
             </div>
 
@@ -138,15 +140,17 @@
             </div>
 
             <div class="w3-section">
-                <input id="reasonForDeletion" class="w3-input" type="text" th:field="*{reasonForDeletion}" disabled="disabled">
+                <input id="reasonForDeletion" class="w3-input" type="text" th:field="*{reasonForDeletion}"
+                       disabled="disabled">
                 <label for="reasonForDeletion">Reason for Deletion</label>
             </div>
 
             <div class="w3-container w3-theme w3-center w3-card-4">
                 <div><input id="update" type="submit" value="Update"/>
-                     <input id="delete" type="button" value="Delete"/>
-                     <input id="reprint" type="submit" value="Reprint Badge" onclick="window.location.href='/printbadge'"/>
-                     <input type="button" value="Back" onclick="window.location.href='/monitor'"/>
+                    <input id="delete" type="button" value="Delete"/>
+                    <input id="reprint" type="submit" value="Reprint Badge"
+                           onclick="window.location.href='/printbadge'"/>
+                    <input type="button" value="Back" onclick="window.location.href='/monitor'"/>
                 </div>
             </div>
 
@@ -155,33 +159,14 @@
     </div>
 
     <div class="w3-half">
-
-
-        <form class="w3-container w3-card-4" action="#" th:action="@{/visitor/lookup}" th:object="${visitors}"
-              method="get">
-
-            <div class="w3-section">
-
-                <div class="w3-padding-16 w3-card">
-                    <div class="w3-row-padding">
-                        <label for="visitorTypes" class="w3-left w3-third">Visitors:</label>
-                        <ul class="w3-ul w3-third w3-card" id="visitorList">
-                            <li th:each="visitor: ${visitors.visitors}">
-                                <input type="radio"
-                                       th:field="*{selected}"
-                                       th:value="${visitor}"/>
-                                <label th:for="${#ids.prev('selected')}"
-                                       th:text="${visitor}"></label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
+        <div class="w3-container w3-card-4">
+            <div class="w3-section w3-padding-16">
+                <div id="visitors"></div>
             </div>
-
-        </form>
-
+        </div>
     </div>
+
+
 </div>
 
 <div class="w3-padding-16"></div>

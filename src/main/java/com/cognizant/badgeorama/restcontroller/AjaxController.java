@@ -75,6 +75,8 @@ public class AjaxController {
         allVisitors.addAll(in);
         allVisitors.addAll(out);
 
+        //Collections.sort(allVisitors);
+
         return allVisitors;
     }
 

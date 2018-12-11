@@ -1,10 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Visitor Admin</title>
     <meta charset="UTF-8">
-    <title>Visitor Status</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="jquery-3.3.1.js"></script>
+    <script src="visitor_status.js"></script>
 </head>
 <body>
-Visitor Status
+
+<header class="w3-container w3-theme w3-padding">
+    <div class="w3-center">
+        <h1 class="w3-xxxlarge w3-animate-bottom">Visitor Status</h1>
+    </div>
+    <div class="w3-center">
+        <p id="time"></p>
+    </div>
+</header>
+<div class="w3-container w3-theme-dark w3-padding"></div>
+
+<div class="w3-section w3-row">
+
+    <div class="w3-third w3-padding">
+        <div class="w3-container w3-card-4">
+            <div class="w3-theme w3-card w3-center">Waiting</div>
+            <div class="w3-section w3-padding-16">
+                <div id="waiting"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-third w3-padding">
+        <div class="w3-container w3-card-4">
+            <div class="w3-theme w3-card w3-center">In</div>
+            <div class="w3-section w3-padding-16">
+                <div id="in"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-third w3-padding">
+        <div class="w3-container w3-card-4">
+            <div class="w3-theme w3-card w3-center">Out</div>
+            <div class="w3-section w3-padding-16">
+                <div id="out"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 </body>
 </html>

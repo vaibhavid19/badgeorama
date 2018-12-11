@@ -6,7 +6,7 @@ import java.util.Date;
  * Main model object for Badge-O-Rama.  Represents a visitor.
  */
 
-public class Visitor {
+public class Visitor implements Comparable<Visitor> {
 
     private String phoneNumber;        // populated by user
     private String firstName;          // populated by user
@@ -226,6 +226,28 @@ public class Visitor {
         sb.append(", visitorType=").append(visitorType);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public int compareTo(Visitor visitor) {
+
+        int lastNameValue = this.getLastName().compareTo(visitor.getLastName());
+
+        if (lastNameValue != 0) {
+
+            return lastNameValue;
+
+        } else {
+
+            int firstNameValue = this.getFirstName().compareTo(visitor.getFirstName());
+
+            if (firstNameValue != 0) {
+                return firstNameValue;
+            }
+
+        }
+
+        return 0;
     }
 
     public enum VisitStatus {
