@@ -57,9 +57,10 @@ public class AjaxController {
             logger.error(findDtoIssue(dto));
         }
 
-
         return returnedVisitor;
     }
+
+
 
     @MonitorRestClient
     @RequestMapping(method = RequestMethod.GET, value = "/monitor/visitors")

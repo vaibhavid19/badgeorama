@@ -88,9 +88,9 @@ public class MonitorController {
         model.addAttribute("listOfVisitorStatuses", statusArray);
         model.addAttribute("listOfVisitorTypes", typeArray);
 
-        model.addAttribute("badgeNumber", "1234");
+        //model.addAttribute("badgeNumber", "1234");
 
-        return new ModelAndView("monitor/visitor_admin", "visitor", visitorAdmin);
+        return new ModelAndView("/monitor/visitor_admin", "visitor", visitorAdmin);
 
     }
 
@@ -146,6 +146,36 @@ public class MonitorController {
 
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/visitor/admin")
+    public ModelAndView visitorAdminGet(@RequestBody VisitorAdmin visitorAdmin, Model model) {
+
+        // List of statuses for form
+        List<String> statuses = new ArrayList<>();
+        for (Visitor.VisitStatus status : Visitor.VisitStatus.values()) {
+            String statusDisplay = WordUtils.capitalizeFully(status.name(), '_');
+            statusDisplay = statusDisplay.replace("_", " ");
+            statuses.add(statusDisplay);
+        }
+        String[] statusArray = new String[statuses.size()];
+        statusArray = statuses.toArray(statusArray);
+
+        // List of visitor types for form
+        List<String> visitorTypes = new ArrayList<>();
+        for (Visitor.VisitorType type : Visitor.VisitorType.values()) {
+            String typeDisplay = WordUtils.capitalizeFully(type.name(), '_');
+            typeDisplay = typeDisplay.replace("_", " ");
+            visitorTypes.add(typeDisplay);
+        }
+        String[] typeArray = new String[visitorTypes.size()];
+        typeArray = visitorTypes.toArray(typeArray);
+
+        model.addAttribute("listOfVisitorStatuses", statusArray);
+        model.addAttribute("listOfVisitorTypes", typeArray);
+
+        return new ModelAndView("/monitor/visitor_admin", "visitor", visitorAdmin);
+
+    }
+
     @RequestMapping(method = RequestMethod.POST, value = "/printbadge")
     public ModelAndView printBadge(@RequestBody Visitor visitor, Model model) {
 
@@ -154,6 +184,30 @@ public class MonitorController {
         return new ModelAndView("/printbadge", HttpStatus.OK);
 
 
+    }
+
+    @MonitorRestClient
+    @RequestMapping(method = RequestMethod.POST, value = "/visit/lookup")
+    public ModelAndView visitLookup(@RequestBody Visitor visitor) {
+
+        // Get the dto
+        ModelDto dto = getDto();
+
+        // create/populate visitor and set in dto
+        dto.setVisitor(visitor);
+
+        // make call to router service
+        ModelDto modelDto = routerService.route(dto);
+
+        // get response from service and return it
+        Visitor returnedVisitor = null;
+        if (validDto(dto)) {
+            returnedVisitor = modelDto.getResponse().getBody();
+        } else {
+            logger.error(findDtoIssue(dto));
+        }
+
+        return new ModelAndView("/monitor/visitor_admin", "visitor", returnedVisitor);
     }
 
     private ModelDto getDto() {

@@ -351,34 +351,62 @@ $(document).ready(function () {
         return size;
     };
 
-    $(document.body).on("click", ".cog-edit", function() {
+    $(document.body).on("click", ".cog-edit", function () {
 
-        let value = $(this).attr("data-arg1");
-        alert("edit: " + value);
+        let data = {};
+        let phone = $(this).attr("data-arg1");
+        data["phoneNumber"] = phone;
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/visitor/lookup",
+            data: JSON.stringify(data),
+            dataType: 'json',
+            timeout: 10000,
+            success: function (result) {
+
+
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json",
+                    url: "/visitor/admin",
+                    data: JSON.stringify(result),
+                    dataType: 'json',
+                    timeout: 10000,
+                    success: function () {
+
+                        console.log("SUCCESS");
+
+                    },
+                    error: function (result) {
+                        console.log("ERROR: " + result);
+                    }
+
+                });
+
+            },
+            error: function (result) {
+                console.log("ERROR: " + result);
+            }
+
+        });
 
     });
 
-    $(document.body).on("click", ".cog-verify", function() {
+    $(document.body).on("click", ".cog-verify", function () {
 
         let value = $(this).attr("data-arg1");
         alert("verify: " + value);
 
     });
 
-    $(document.body).on("click", ".cog-checkout", function() {
+    $(document.body).on("click", ".cog-checkout", function () {
 
         let value = $(this).attr("data-arg1");
         alert("checkout: " + value);
 
     });
-
-
-
-
-
-
-
-
 
 
     // add new jquery here
