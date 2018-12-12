@@ -33,17 +33,20 @@ $(document).ready(function () {
                 let text = "";
                 result.forEach(function (element, index) {
 
-                    text += "<div class='w3-container w3-padding-16 w3-card'>";
+                    text += "<div class='w3-container w3-padding-16 w3-card cog-radius-10'>";
 
-
-                    text += "<div class='w3-bar w3-theme'>";
+                    if (element.status === "UNVERIFIED") {
+                        text += "<div class='w3-bar w3-yellow cog-radius-10'>";
+                    } else if (element.status === "WAITING_TIMEOUT") {
+                        text += "<div class='w3-bar w3-red cog-radius-10'>";
+                    } else {
+                        text += "<div class='w3-bar w3-light-blue cog-radius-10'>";
+                    }
 
                     text += "<div class='w3-row'>";
                     text += "<div class='w3-half w3-padding'>";
 
                     text += "<div class='w3-large'>";
-                    text += (index + 1);
-                    text += ' ';
                     text += element.firstName;
                     text += ' ';
                     text += element.lastName;
@@ -56,6 +59,15 @@ $(document).ready(function () {
                     text += element.phoneNumber;
                     text += "</div>"; // small
 
+                    if (element.status !== "UNVERIFIED") {
+                        text += "<div class='w3-small'>";
+                        text += "&nbsp;";
+                        text += "<i class='fas fa-id-badge'></i>";
+                        text += "&nbsp;";
+                        text += element.badgeNumber;
+                        text += "</div>"; // small
+                    }
+
                     text += "</div>"; // half
 
                     text += "<div class='w3-half w3-padding'>";
@@ -63,12 +75,20 @@ $(document).ready(function () {
                     text += "<div class='w3-dropdown-hover w3-right'>";
                     text += "<button class='w3-button w3-padding-16'>";
                     text += "Select Action";
+                    text += "&nbsp;";
                     text += "<i class='fa fa-caret-down'></i>";
                     text += "</button>";
 
                     text += "<div class='w3-dropdown-content w3-card-4 w3-bar-block'>";
-                    text += "<a href='javascript:void(0)' class='w3-bar-item w3-button'>Edit</a>";
-                    text += "<a href='javascript:void(0)' class='w3-bar-item w3-button'>Verify</a>";
+
+                    text += "<div class='w3-bar-item w3-button cog-edit' data-arg1=\'";
+                    text += element.phoneNumber.replace(/\D/g, '');
+                    text += "\'>Edit</div>";
+
+                    text += "<div class='w3-bar-item w3-button cog-verify' data-arg1=\'";
+                    text += element.phoneNumber.replace(/\D/g, '');
+                    text += "\'>Verify</div>";
+
                     text += "</div>"; // content
                     text += "</div>"; // dropdown
 
@@ -77,10 +97,18 @@ $(document).ready(function () {
 
                     text += "</div>"; // bar
 
+                    text += "<div class='w3-row'>";
+                    text += "<div class='w3-half'>";
                     text += 'Status: ';
                     text += element.status;
-                    text += ' Visitor Type: ';
+                    text += "</div>"; // half
+                    text += "<div class='w3-half'>";
+                    text += "<div class='w3-right'>";
+                    text += 'Type: ';
                     text += element.visitorType;
+                    text += "</div>"; // right
+                    text += "</div>"; // half
+                    text += "</div>"; // row
 
                     text += "</div>"; // container
 
@@ -94,6 +122,7 @@ $(document).ready(function () {
                 });
 
                 $("#waiting").html(text);
+                $("#waitingCount").text("Waiting - (" + Object.size(result) + ")");
             },
             error: function (result) {
                 console.log("ERROR: " + result);
@@ -116,17 +145,15 @@ $(document).ready(function () {
                 let text = "";
                 result.forEach(function (element, index) {
 
-                    text += "<div class='w3-container w3-padding-16 w3-card'>";
+                    text += "<div class='w3-container w3-padding-16 w3-card cog-radius-10'>";
 
 
-                    text += "<div class='w3-bar w3-theme'>";
+                    text += "<div class='w3-bar w3-light-green cog-radius-10'>";
 
                     text += "<div class='w3-row'>";
                     text += "<div class='w3-half w3-padding'>";
 
                     text += "<div class='w3-large'>";
-                    text += (index + 1);
-                    text += ' ';
                     text += element.firstName;
                     text += ' ';
                     text += element.lastName;
@@ -139,6 +166,15 @@ $(document).ready(function () {
                     text += element.phoneNumber;
                     text += "</div>"; // small
 
+                    if (element.status !== "UNVERIFIED") {
+                        text += "<div class='w3-small'>";
+                        text += "&nbsp;";
+                        text += "<i class='fas fa-id-badge'></i>";
+                        text += "&nbsp;";
+                        text += element.badgeNumber;
+                        text += "</div>"; // small
+                    }
+
                     text += "</div>"; // half
 
                     text += "<div class='w3-half w3-padding'>";
@@ -146,12 +182,20 @@ $(document).ready(function () {
                     text += "<div class='w3-dropdown-hover w3-right'>";
                     text += "<button class='w3-button w3-padding-16'>";
                     text += "Select Action";
+                    text += "&nbsp;";
                     text += "<i class='fa fa-caret-down'></i>";
                     text += "</button>";
 
                     text += "<div class='w3-dropdown-content w3-card-4 w3-bar-block'>";
-                    text += "<a href='javascript:void(0)' class='w3-bar-item w3-button'>Edit</a>";
-                    text += "<a href='javascript:void(0)' class='w3-bar-item w3-button'>CheckOut</a>";
+
+                    text += "<div class='w3-bar-item w3-button cog-edit' data-arg1=\'";
+                    text += element.phoneNumber.replace(/\D/g, '');
+                    text += "\'>Edit</div>";
+
+                    text += "<div class='w3-bar-item w3-button cog-checkout' data-arg1=\'";
+                    text += element.phoneNumber.replace(/\D/g, '');
+                    text += "\'>Check-Out</div>";
+
                     text += "</div>"; // content
                     text += "</div>"; // dropdown
 
@@ -160,10 +204,18 @@ $(document).ready(function () {
 
                     text += "</div>"; // bar
 
+                    text += "<div class='w3-row'>";
+                    text += "<div class='w3-half'>";
                     text += 'Status: ';
                     text += element.status;
-                    text += ' Visitor Type: ';
+                    text += "</div>"; // half
+                    text += "<div class='w3-half'>";
+                    text += "<div class='w3-right'>";
+                    text += 'Type: ';
                     text += element.visitorType;
+                    text += "</div>"; // right
+                    text += "</div>"; // half
+                    text += "</div>"; // row
 
                     text += "</div>"; // container
 
@@ -177,6 +229,7 @@ $(document).ready(function () {
                 });
 
                 $("#in").html(text);
+                $("#inCount").text("In - (" + Object.size(result) + ")");
             },
             error: function (result) {
                 console.log("ERROR: " + result);
@@ -199,17 +252,15 @@ $(document).ready(function () {
                 let text = "";
                 result.forEach(function (element, index) {
 
-                    text += "<div class='w3-container w3-padding-16 w3-card'>";
+                    text += "<div class='w3-container w3-padding-16 w3-card cog-radius-10'>";
 
 
-                    text += "<div class='w3-bar w3-theme'>";
+                    text += "<div class='w3-bar w3-grey cog-radius-10'>";
 
                     text += "<div class='w3-row'>";
                     text += "<div class='w3-half w3-padding'>";
 
                     text += "<div class='w3-large'>";
-                    text += (index + 1);
-                    text += ' ';
                     text += element.firstName;
                     text += ' ';
                     text += element.lastName;
@@ -222,18 +273,32 @@ $(document).ready(function () {
                     text += element.phoneNumber;
                     text += "</div>"; // small
 
+                    if (element.status !== "UNVERIFIED") {
+                        text += "<div class='w3-small'>";
+                        text += "&nbsp;";
+                        text += "<i class='fas fa-id-badge'></i>";
+                        text += "&nbsp;";
+                        text += element.badgeNumber;
+                        text += "</div>"; // small
+                    }
+
                     text += "</div>"; // half
 
                     text += "<div class='w3-half w3-padding'>";
 
                     text += "<div class='w3-dropdown-hover w3-right'>";
-                    text += "<button class='w3-button w3-padding-16'>";
+                    text += "<button class='w3-button w3-padding-16 '>";
                     text += "Select Action";
+                    text += "&nbsp;";
                     text += "<i class='fa fa-caret-down'></i>";
                     text += "</button>";
 
                     text += "<div class='w3-dropdown-content w3-card-4 w3-bar-block'>";
-                    text += "<a href='javascript:void(0)' class='w3-bar-item w3-button'>Edit</a>";
+
+                    text += "<div class='w3-bar-item w3-button cog-edit' data-arg1=\'";
+                    text += element.phoneNumber.replace(/\D/g, '');
+                    text += "\'>Edit</div>";
+
                     text += "</div>"; // content
                     text += "</div>"; // dropdown
 
@@ -242,10 +307,18 @@ $(document).ready(function () {
 
                     text += "</div>"; // bar
 
+                    text += "<div class='w3-row'>";
+                    text += "<div class='w3-half'>";
                     text += 'Status: ';
                     text += element.status;
-                    text += ' Visitor Type: ';
+                    text += "</div>"; // half
+                    text += "<div class='w3-half'>";
+                    text += "<div class='w3-right'>";
+                    text += 'Type: ';
                     text += element.visitorType;
+                    text += "</div>"; // right
+                    text += "</div>"; // half
+                    text += "</div>"; // row
 
                     text += "</div>"; // container
 
@@ -259,6 +332,7 @@ $(document).ready(function () {
                 });
 
                 $("#out").html(text);
+                $("#outCount").text("Out - (" + Object.size(result) + ")");
             },
             error: function (result) {
                 console.log("ERROR: " + result);
@@ -276,6 +350,36 @@ $(document).ready(function () {
         }
         return size;
     };
+
+    $(document.body).on("click", ".cog-edit", function() {
+
+        let value = $(this).attr("data-arg1");
+        alert("edit: " + value);
+
+    });
+
+    $(document.body).on("click", ".cog-verify", function() {
+
+        let value = $(this).attr("data-arg1");
+        alert("verify: " + value);
+
+    });
+
+    $(document.body).on("click", ".cog-checkout", function() {
+
+        let value = $(this).attr("data-arg1");
+        alert("checkout: " + value);
+
+    });
+
+
+
+
+
+
+
+
+
 
     // add new jquery here
 

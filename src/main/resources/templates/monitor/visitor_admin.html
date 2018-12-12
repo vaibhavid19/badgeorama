@@ -10,6 +10,7 @@
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="jquery-3.3.1.js"></script>
     <script src="visitor_admin.js"></script>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
@@ -27,8 +28,10 @@
 
     <div class="w3-half">
 
-        <form class="w3-container w3-card-4" action="#" th:action="@{/visitor/admin}" th:object="${visitor}"
+        <form class="w3-container w3-card-4 cog-radius-10" action="#" th:action="@{/visitor/admin}" th:object="${visitor}"
               method="post">
+
+            <div class="w3-theme w3-card w3-center">Edit Visitor Information</div>
 
             <div class="w3-section">
                 <input id="badgeNumber" name="badgeNumber" class="w3-input" type="text" th:value="*{badgeNumber}">
@@ -145,7 +148,7 @@
                 <label for="reasonForDeletion">Reason for Deletion</label>
             </div>
 
-            <div class="w3-container w3-theme w3-center w3-card-4">
+            <div class="w3-container w3-theme w3-center w3-card-4 w3-padding">
                 <div><input id="update" type="submit" value="Update"/>
                     <input id="delete" type="button" value="Delete"/>
                     <input id="reprint" type="submit" value="Reprint Badge"
@@ -159,7 +162,8 @@
     </div>
 
     <div class="w3-half">
-        <div class="w3-container w3-card-4">
+        <div class="w3-container w3-card-4 cog-radius-10">
+            <div id="visitorCount" class="w3-theme w3-card w3-center">Visitors</div>
             <div class="w3-section w3-padding-16">
                 <div id="visitors"></div>
             </div>
@@ -172,8 +176,8 @@
 <div class="w3-padding-16"></div>
 
 <footer class="w3-container w3-theme-dark">
-    <h5>Footer</h5>
-    <p class="w3-opacity">Footer information goes here</p>
+    <h5>King of Swamp Castle:</h5>
+    <p class="w3-opacity">“Please! This is supposed to be a happy occasion. Let's not bicker and argue over who killed who.”</p>
 </footer>
 
 </body>

@@ -10,6 +10,7 @@
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="jquery-3.3.1.js"></script>
     <script src="visitor_status.js"></script>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
@@ -26,8 +27,8 @@
 <div class="w3-section w3-row">
 
     <div class="w3-third w3-padding">
-        <div class="w3-container w3-card-4">
-            <div class="w3-theme w3-card w3-center">Waiting</div>
+        <div class="w3-container w3-card-4 cog-radius-10">
+            <div id="waitingCount" class="w3-theme w3-card w3-center">Waiting</div>
             <div class="w3-section w3-padding-16">
                 <div id="waiting"></div>
             </div>
@@ -35,8 +36,8 @@
     </div>
 
     <div class="w3-third w3-padding">
-        <div class="w3-container w3-card-4">
-            <div class="w3-theme w3-card w3-center">In</div>
+        <div class="w3-container w3-card-4 cog-radius-10">
+            <div id="inCount" class="w3-theme w3-card w3-center">In</div>
             <div class="w3-section w3-padding-16">
                 <div id="in"></div>
             </div>
@@ -44,8 +45,8 @@
     </div>
 
     <div class="w3-third w3-padding">
-        <div class="w3-container w3-card-4">
-            <div class="w3-theme w3-card w3-center">Out</div>
+        <div class="w3-container w3-card-4 cog-radius-10">
+            <div id="outCount" class="w3-theme w3-card w3-center">Out</div>
             <div class="w3-section w3-padding-16">
                 <div id="out"></div>
             </div>
@@ -53,6 +54,13 @@
     </div>
 
 </div>
+
+<div class="w3-padding-16"></div>
+
+<footer class="w3-container w3-theme-dark">
+    <h5>Bridgekeeper:</h5>
+    <p class="w3-opacity">“What... is the air-speed velocity of an unladen swallow?”</p>
+</footer>
 
 </body>
 </html>
